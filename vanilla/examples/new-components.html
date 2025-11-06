@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>New Components - Product Swiper, Tabs, Infinite Carousel</title>
+
+    <!-- Components CSS -->
+    <link
+      rel="stylesheet"
+      href="../components/product-swiper/product-swiper.css"
+    />
+    <link
+      rel="stylesheet"
+      href="../components/infinite-carousel/infinite-carousel.css"
+    />
+    <link rel="stylesheet" href="../components/tabs/tabs.css" />
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          Oxygen, Ubuntu, sans-serif;
+        line-height: 1.6;
+        color: #333;
+      }
+
+      .section {
+        min-height: 100vh;
+        padding: 80px 40px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .section-title {
+        font-size: 48px;
+        margin-bottom: 20px;
+        text-align: center;
+      }
+
+      .section-description {
+        font-size: 18px;
+        color: #666;
+        text-align: center;
+        margin-bottom: 60px;
+        max-width: 600px;
+      }
+
+      .back-link {
+        position: fixed;
+        top: 20px;
+        left: 20px;
+        padding: 12px 24px;
+        background: #007aff;
+        color: white;
+        text-decoration: none;
+        border-radius: 8px;
+        z-index: 1000;
+        transition: background 0.3s;
+      }
+
+      .back-link:hover {
+        background: #0051d5;
+      }
+
+      /* Product Swiper Section */
+      #product-swiper-section {
+        background: #f5f5f5;
+      }
+
+      /* Infinite Carousel Section */
+      #infinite-carousel-section {
+        background: #1a1a2e;
+        color: white;
+      }
+
+      #infinite-carousel-section .section-title {
+        color: white;
+      }
+
+      #infinite-carousel-section .section-description {
+        color: #ccc;
+      }
+
+      .carousel-item {
+        width: 300px;
+        height: 200px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 12px;
+        color: white;
+        font-size: 24px;
+        font-weight: bold;
+      }
+
+      /* Tabs Section */
+      #tabs-section {
+        background: white;
+      }
+
+      .tabs-demo-container {
+        width: 100%;
+        max-width: 1200px;
+      }
+
+      .tab-demo-section {
+        margin-bottom: 80px;
+      }
+
+      .tab-demo-title {
+        font-size: 24px;
+        margin-bottom: 20px;
+        color: #333;
+      }
+
+      .tab-content-box {
+        padding: 40px;
+        background: #f9fafb;
+        border-radius: 8px;
+        min-height: 200px;
+      }
+    </style>
+  </head>
+  <body>
+    <a href="index.html" class="back-link">← 메인으로 돌아가기</a>
+
+    <!-- Product Swiper Section -->
+    <section id="product-swiper-section" class="section">
+      <h1 class="section-title">Product Swiper</h1>
+      <p class="section-description">
+        이미지와 텍스트가 함께 전환되며, 이전/다음 텍스트를 미리보기(Peek)할 수
+        있는 제품 스와이퍼
+      </p>
+      <div id="productSwiper"></div>
+    </section>
+
+    <!-- Infinite Carousel Section -->
+    <section id="infinite-carousel-section" class="section">
+      <h1 class="section-title">Infinite Carousel</h1>
+      <p class="section-description">
+        자동으로 무한 루프되는 캐러셀 (방향 설정 가능, 호버시 멈춤)
+      </p>
+      <div id="infiniteCarousel" style="width: 100%; max-width: 1400px"></div>
+    </section>
+
+    <!-- Tabs Section -->
+    <section id="tabs-section" class="section">
+      <h1 class="section-title">Tabs</h1>
+      <p class="section-description">
+        10가지 스타일을 지원하는 다양한 탭 컴포넌트
+      </p>
+
+      <div class="tabs-demo-container">
+        <!-- Underline Tabs -->
+        <div class="tab-demo-section">
+          <h3 class="tab-demo-title">Underline (기본)</h3>
+          <div id="tabs-underline"></div>
+        </div>
+
+        <!-- Box Tabs -->
+        <div class="tab-demo-section">
+          <h3 class="tab-demo-title">Box</h3>
+          <div id="tabs-box"></div>
+        </div>
+
+        <!-- Pill Tabs -->
+        <div class="tab-demo-section">
+          <h3 class="tab-demo-title">Pill</h3>
+          <div id="tabs-pill"></div>
+        </div>
+
+        <!-- Fill Tabs -->
+        <div class="tab-demo-section">
+          <h3 class="tab-demo-title">Fill (Segmented Control)</h3>
+          <div id="tabs-fill"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Components JavaScript -->
+    <script src="../components/product-swiper/product-swiper.js"></script>
+    <script src="../components/infinite-carousel/infinite-carousel.js"></script>
+    <script src="../components/tabs/tabs.js"></script>
+
+    <script>
+      // Product Swiper 초기화
+      const productSwiper = new ProductSwiper(
+        document.getElementById("productSwiper"),
+        {
+          slides: [
+            {
+              image:
+                "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=800",
+              title: "제품 1",
+              description:
+                "프리미엄 헤드폰 - 최고의 음질과 편안한 착용감을 제공합니다."
+            },
+            {
+              image:
+                "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=800",
+              title: "제품 2",
+              description:
+                "스마트 워치 - 건강 관리와 스타일을 동시에 만족시키는 완벽한 선택."
+            },
+            {
+              image:
+                "https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=800",
+              title: "제품 3",
+              description:
+                "무선 이어폰 - 자유로운 음악 감상을 위한 최고의 파트너."
+            },
+            {
+              image:
+                "https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?w=800",
+              title: "제품 4",
+              description: "카메라 - 당신의 소중한 순간을 완벽하게 담아냅니다."
+            }
+          ],
+          textPosition: "right"
+        }
+      );
+
+      // Infinite Carousel 초기화
+      const carouselItems = [];
+      for (let i = 0; i < 10; i++) {
+        const hue = i * 36;
+        carouselItems.push(`
+                <div class="carousel-item" style="background: linear-gradient(135deg, hsl(${hue}, 70%, 60%), hsl(${
+          hue + 30
+        }, 70%, 50%))">
+                    Item ${i + 1}
+                </div>
+            `);
+      }
+
+      const infiniteCarousel = new InfiniteCarousel(
+        document.getElementById("infiniteCarousel"),
+        {
+          items: carouselItems,
+          speed: 40,
+          direction: "left",
+          gap: 24,
+          pauseOnHover: true
+        }
+      );
+
+      // Tabs 공통 데이터
+      const tabsData = [
+        {
+          label: "홈",
+          content:
+            '<div class="tab-content-box"><h3>홈 컨텐츠</h3><p>여기는 홈 탭의 내용입니다.</p></div>'
+        },
+        {
+          label: "프로필",
+          content:
+            '<div class="tab-content-box"><h3>프로필 컨텐츠</h3><p>사용자 프로필 정보를 표시합니다.</p></div>'
+        },
+        {
+          label: "설정",
+          content:
+            '<div class="tab-content-box"><h3>설정 컨텐츠</h3><p>애플리케이션 설정을 관리합니다.</p></div>'
+        }
+      ];
+
+      // Underline Tabs
+      new Tabs(document.getElementById("tabs-underline"), {
+        tabs: tabsData,
+        variant: "underline"
+      });
+
+      // Box Tabs
+      new Tabs(document.getElementById("tabs-box"), {
+        tabs: tabsData,
+        variant: "box"
+      });
+
+      // Pill Tabs
+      new Tabs(document.getElementById("tabs-pill"), {
+        tabs: tabsData,
+        variant: "pill"
+      });
+
+      // Fill Tabs
+      new Tabs(document.getElementById("tabs-fill"), {
+        tabs: tabsData,
+        variant: "fill"
+      });
+    </script>
+  </body>
+</html>

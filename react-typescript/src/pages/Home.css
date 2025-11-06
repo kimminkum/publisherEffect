@@ -1,0 +1,109 @@
+.home-page {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 60px 20px;
+  opacity: 0;
+  transform: scale(0.9);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+  position: relative;
+  z-index: 1;
+}
+
+.home-page.zoom-in {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.home-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.home-header {
+  text-align: center;
+  color: white;
+  margin-bottom: 60px;
+}
+
+.home-header h1 {
+  font-size: 48px;
+  margin-bottom: 16px;
+  font-weight: 700;
+}
+
+.home-header p {
+  font-size: 20px;
+  opacity: 0.9;
+}
+
+.examples-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
+  margin-bottom: 60px;
+}
+
+.example-card {
+  background: white;
+  padding: 32px;
+  border-radius: 16px;
+  text-decoration: none;
+  color: #333;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.example-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+}
+
+.example-card h3 {
+  font-size: 24px;
+  margin-bottom: 12px;
+  color: #667eea;
+}
+
+.example-card p {
+  font-size: 16px;
+  color: #666;
+  margin-bottom: 16px;
+  line-height: 1.6;
+}
+
+.card-arrow {
+  position: absolute;
+  bottom: 32px;
+  right: 32px;
+  font-size: 24px;
+  color: #667eea;
+  transition: transform 0.3s ease;
+}
+
+.example-card:hover .card-arrow {
+  transform: translateX(8px);
+}
+
+.home-footer {
+  text-align: center;
+  color: white;
+  font-size: 16px;
+  opacity: 0.9;
+  line-height: 1.8;
+}
+
+@media (max-width: 768px) {
+  .home-header h1 {
+    font-size: 32px;
+  }
+
+  .home-header p {
+    font-size: 16px;
+  }
+
+  .examples-grid {
+    grid-template-columns: 1fr;
+  }
+}

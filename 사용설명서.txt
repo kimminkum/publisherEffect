@@ -1,0 +1,2076 @@
+═══════════════════════════════════════════════════════════════════
+     Publisher Components Library - 완전 실전 사용 설명서
+═══════════════════════════════════════════════════════════════════
+
+📖 이 설명서는 실제 프로젝트에서 바로 복사하여 사용할 수 있도록
+   모든 바리에이션과 커스터마이징 방법을 포함합니다.
+
+
+═══════════════════════════════════════════════════════════════════
+                        설치 및 실행
+═══════════════════════════════════════════════════════════════════
+
+### React + TypeScript
+
+cd react-typescript
+npm install
+npm run dev
+
+→ http://localhost:5173
+
+
+### Vanilla JavaScript
+
+1. vanilla/examples/menu.html 브라우저에서 열기
+2. 또는: cd vanilla && npx serve .
+
+
+═══════════════════════════════════════════════════════════════════
+                    1. SWIPER (슬라이더)
+═══════════════════════════════════════════════════════════════════
+
+📌 기본 사용법
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+React:
+```tsx
+import { Swiper } from './components/Swiper';
+
+<Swiper
+  slides={[
+    <div>슬라이드 1</div>,
+    <div>슬라이드 2</div>,
+    <div>슬라이드 3</div>
+  ]}
+/>
+```
+
+Vanilla:
+```html
+<div class="swiper-container" id="mySwiper">
+  <div class="swiper-slide">슬라이드 1</div>
+  <div class="swiper-slide">슬라이드 2</div>
+</div>
+
+<script>
+  new CustomSwiper({ container: '#mySwiper' });
+</script>
+```
+
+
+📌 Pagination 타입 변경
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+// Dots (점)
+<Swiper paginationType="dots" />
+
+// Progress Bar (진행 바)
+<Swiper paginationType="progressbar" />
+
+// Fraction (1/4 형식)
+<Swiper paginationType="fraction" />
+
+// Gauge (게이지, 자동재생과 최적)
+<Swiper paginationType="gauge" autoplay={true} />
+
+// 없음
+<Swiper paginationType="none" />
+
+
+📌 Pagination 위치 변경 ⭐
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+<Swiper
+  paginationType="dots"
+  paginationPosition="top"     // 상단
+/>
+
+<Swiper
+  paginationType="dots"
+  paginationPosition="bottom"  // 하단 (기본)
+/>
+
+<Swiper
+  paginationType="progressbar"
+  paginationPosition="left"    // 왼쪽 (세로)
+/>
+
+<Swiper
+  paginationType="dots"
+  paginationPosition="right"   // 오른쪽 (세로)
+/>
+
+
+📌 자동 재생 설정
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+<Swiper
+  autoplay={true}
+  autoplayDelay={3000}  // 3초마다
+/>
+
+<Swiper
+  autoplay={true}
+  autoplayDelay={5000}  // 5초마다
+  loop={true}           // 무한 반복
+/>
+
+
+📌 리모컨 추가 ⭐
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+<Swiper
+  showRemoteControl={true}  // 재생/일시정지, 이전/다음, 카운터
+  autoplay={true}
+/>
+
+
+📌 네비게이션 버튼 설정
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+<Swiper
+  navigation={true}   // 이전/다음 버튼 표시
+  loop={false}        // 끝에서 멈춤
+/>
+
+<Swiper
+  navigation={false}  // 버튼 숨김
+/>
+
+
+📌 슬라이드 전환 속도
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+<Swiper
+  speed={300}   // 빠름 (기본)
+/>
+
+<Swiper
+  speed={800}   // 느림 (부드러움)
+/>
+
+
+📌 슬라이드 변경 감지
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+<Swiper
+  onSlideChange={(index) => {
+    console.log('현재 슬라이드:', index);
+  }}
+/>
+
+
+📌 Active 슬라이드 크게 보이기
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+CSS 추가:
+```css
+.swiper-slide {
+  opacity: 0.5;
+  transform: scale(0.9);
+  transition: all 0.3s ease;
+}
+
+.swiper-slide.active {
+  opacity: 1;
+  transform: scale(1);
+}
+```
+
+
+📌 숫자 표시 추가
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+슬라이드 안에:
+```tsx
+<Swiper
+  slides={[
+    <div>
+      <span className="slide-number">01</span>
+      <h2>첫 번째 슬라이드</h2>
+    </div>,
+    <div>
+      <span className="slide-number">02</span>
+      <h2>두 번째 슬라이드</h2>
+    </div>
+  ]}
+/>
+```
+
+CSS:
+```css
+.slide-number {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 72px;
+  font-weight: 700;
+  opacity: 0.2;
+}
+```
+
+
+📌 완전 커스텀 예제
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+```tsx
+<Swiper
+  slides={mySlides}
+  paginationType="gauge"
+  paginationPosition="bottom"
+  autoplay={true}
+  autoplayDelay={4000}
+  loop={true}
+  speed={600}
+  navigation={true}
+  showRemoteControl={true}
+  className="custom-swiper"
+  onSlideChange={(index) => updateContent(index)}
+/>
+```
+
+
+═══════════════════════════════════════════════════════════════════
+              2. PRODUCT SWIPER (제품 스와이퍼) ⭐
+═══════════════════════════════════════════════════════════════════
+
+📌 기본 사용법
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+```tsx
+const products = [
+  {
+    image: 'product1.jpg',
+    title: '제품명',
+    description: '제품 설명...'
+  }
+];
+
+<ProductSwiper slides={products} />
+```
+
+
+📌 텍스트 위치 변경
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+// 텍스트 왼쪽
+<ProductSwiper
+  slides={products}
+  textPosition="left"
+/>
+
+// 텍스트 오른쪽
+<ProductSwiper
+  slides={products}
+  textPosition="right"
+/>
+
+
+📌 그라데이션 오버레이 (블러 효과)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+// 흰색→투명 그라데이션
+<ProductSwiper
+  slides={products}
+  gradientOverlay={true}
+/>
+
+// 그라데이션 없음 (mask-image 사용)
+<ProductSwiper
+  slides={products}
+  gradientOverlay={false}
+/>
+
+
+📌 Sticky 모드 (스크롤로 제어) ⭐
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+모든 제품을 볼 때까지 섹션 고정
+
+<ProductSwiper
+  slides={products}
+  stickyMode={true}  // 스크롤로 자동 제어
+  gradientOverlay={true}
+/>
+
+동작:
+1. 섹션에 걸림
+2. 스크롤 내리면 자동으로 다음 제품
+3. 모든 제품 다 보면 아래로 이동
+
+
+📌 일반 모드 (버튼 + 스크롤)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+<ProductSwiper
+  slides={products}
+  stickyMode={false}  // 기본값
+/>
+
+- 스크롤로 제어
+- 버튼으로 제어
+- Pagination 클릭
+
+
+📌 실전 예제 - 제품 상세 페이지
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+```tsx
+const products = [
+  {
+    image: '/products/headphone.jpg',
+    title: '프리미엄 헤드폰',
+    description: `
+      최고급 사운드 품질
+      ✓ 노이즈 캔슬링
+      ✓ 30시간 배터리
+      ✓ 프리미엄 가죽 이어패드
+    `
+  },
+  {
+    image: '/products/watch.jpg',
+    title: '스마트 워치',
+    description: `
+      건강 관리의 새로운 기준
+      ✓ 심박수 모니터링
+      ✓ 운동 자동 감지
+      ✓ 방수 기능
+    `
+  }
+];
+
+<ProductSwiper
+  slides={products}
+  textPosition="left"
+  stickyMode={true}
+  gradientOverlay={true}
+/>
+```
+
+
+═══════════════════════════════════════════════════════════════════
+         3. STICKY IMAGE ZOOM (섹션 고정 이미지 확대) ⭐
+═══════════════════════════════════════════════════════════════════
+
+📌 기본 사용법
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+```tsx
+<StickyImageZoom
+  imageSrc="hero.jpg"
+  overlayContent={<h1>제목</h1>}
+/>
+```
+
+동작:
+1. 섹션 걸림
+2. 스크롤 → 이미지 확대 (작은 크기 → 100%)
+3. 이미지 다 차면 딤 처리
+4. 텍스트 한글자씩 표시
+5. 완료 후 다음 섹션
+
+
+📌 확대 정도 조절
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+// 작게 시작 → 크게
+<StickyImageZoom
+  imageSrc="image.jpg"
+  initialScale={0.1}  // 10%
+  finalScale={1}      // 100%
+/>
+
+// 중간 크기 → 크게
+<StickyImageZoom
+  imageSrc="image.jpg"
+  initialScale={0.5}  // 50%
+  finalScale={1}
+/>
+
+// 조금만 확대
+<StickyImageZoom
+  imageSrc="image.jpg"
+  initialScale={0.7}  // 70%
+  finalScale={1}
+/>
+
+
+📌 딤(어둡게) 효과 조절
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+// 진하게
+<StickyImageZoom
+  imageSrc="image.jpg"
+  showDimOverlay={true}
+  dimOpacity={0.8}  // 80% 어둡게
+/>
+
+// 살짝만
+<StickyImageZoom
+  imageSrc="image.jpg"
+  dimOpacity={0.3}  // 30%
+/>
+
+// 딤 없음
+<StickyImageZoom
+  imageSrc="image.jpg"
+  showDimOverlay={false}
+/>
+
+
+📌 텍스트 커스터마이징
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+<StickyImageZoom
+  imageSrc="image.jpg"
+  overlayContent={
+    <div>
+      <h1 style={{ fontSize: '64px', marginBottom: '24px' }}>
+        큰 제목
+      </h1>
+      <p style={{ fontSize: '28px' }}>
+        설명 텍스트
+      </p>
+      <button>버튼 추가 가능</button>
+    </div>
+  }
+/>
+
+
+📌 실전 예제 - 브랜드 소개
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+```tsx
+<StickyImageZoom
+  imageSrc="/images/brand-hero.jpg"
+  imageAlt="브랜드 이미지"
+  initialScale={0.2}
+  finalScale={1}
+  showDimOverlay={true}
+  dimOpacity={0.7}
+  overlayContent={
+    <div className="brand-intro">
+      <h1>Premium Brand</h1>
+      <p>최고의 품질, 완벽한 디자인</p>
+      <div className="brand-features">
+        <span>✓ 10년 보증</span>
+        <span>✓ 무료 배송</span>
+      </div>
+    </div>
+  }
+/>
+```
+
+
+═══════════════════════════════════════════════════════════════════
+           4. TEXT COLOR TRANSITION (색상 전환) ⭐
+═══════════════════════════════════════════════════════════════════
+
+📌 기본 사용법
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+```tsx
+<TextColorTransition
+  lines={[
+    "첫 번째 줄",
+    "두 번째 줄",
+    "세 번째 줄"
+  ]}
+/>
+```
+
+동작: 좌→우로 한 줄씩 회색→검은색 전환
+
+
+📌 색상 변경
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+// 회색 → 검은색
+<TextColorTransition
+  lines={lines}
+  startColor="#cccccc"
+  endColor="#000000"
+/>
+
+// 회색 → 파란색
+<TextColorTransition
+  lines={lines}
+  startColor="#999999"
+  endColor="#007aff"
+/>
+
+// 파란색 → 빨간색
+<TextColorTransition
+  lines={lines}
+  startColor="#007aff"
+  endColor="#ff0000"
+/>
+
+
+📌 다크 배경용
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+```tsx
+<div style={{ background: '#1a1a1a' }}>
+  <TextColorTransition
+    lines={["어두운", "배경에는", "밝은 색"]}
+    startColor="#444444"
+    endColor="#ffffff"
+  />
+</div>
+```
+
+
+📌 브랜딩용
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+```tsx
+<TextColorTransition
+  lines={[
+    "혁신적인 기술",
+    "완벽한 디자인",
+    "최고의 경험"
+  ]}
+  startColor="#e0e0e0"
+  endColor="#ff6b6b"  // 브랜드 색상
+/>
+```
+
+
+═══════════════════════════════════════════════════════════════════
+              5. CURTAIN REVEAL (커튼 열림) ⭐
+═══════════════════════════════════════════════════════════════════
+
+📌 기본 사용법
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+```tsx
+<CurtainReveal
+  imageSrc="reveal.jpg"
+/>
+```
+
+
+📌 커튼 색상 변경
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+// 흰색 커튼 (밝은 배경)
+<CurtainReveal
+  imageSrc="image.jpg"
+  curtainColor="#ffffff"
+/>
+
+// 검은 커튼 (어두운 배경)
+<CurtainReveal
+  imageSrc="image.jpg"
+  curtainColor="#000000"
+/>
+
+// 브랜드 색상
+<CurtainReveal
+  imageSrc="image.jpg"
+  curtainColor="#667eea"
+/>
+
+
+📌 트리거 타이밍 조절
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+<CurtainReveal
+  imageSrc="image.jpg"
+  triggerOffset={-100}  // 100px 전에 시작
+/>
+
+<CurtainReveal
+  imageSrc="image.jpg"
+  triggerOffset={100}   // 100px 후에 시작
+/>
+
+
+📌 배경과 맞춰 사용
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+```tsx
+<div style={{ background: '#667eea' }}>
+  <CurtainReveal
+    imageSrc="product.jpg"
+    curtainColor="#667eea"  // 배경과 동일
+  />
+</div>
+```
+
+
+═══════════════════════════════════════════════════════════════════
+         6. HORIZONTAL SCROLL (좌우 스크롤) ⭐
+═══════════════════════════════════════════════════════════════════
+
+📌 기본 사용법
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+```tsx
+<HorizontalScrollSection>
+  <div>슬라이드 1</div>
+  <div>슬라이드 2</div>
+  <div>슬라이드 3</div>
+</HorizontalScrollSection>
+```
+
+동작: 세로 스크롤 → 가로 스크롤 → 다시 세로
+
+
+📌 슬라이드 개수 조절
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+// 3개
+<HorizontalScrollSection>
+  <div>1</div>
+  <div>2</div>
+  <div>3</div>
+</HorizontalScrollSection>
+
+// 5개
+<HorizontalScrollSection>
+  <div>1</div>
+  <div>2</div>
+  <div>3</div>
+  <div>4</div>
+  <div>5</div>
+</HorizontalScrollSection>
+
+
+📌 포트폴리오 갤러리
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+```tsx
+<HorizontalScrollSection>
+  {projects.map(project => (
+    <div className="project-slide">
+      <img src={project.image} />
+      <h3>{project.title}</h3>
+      <p>{project.description}</p>
+    </div>
+  ))}
+</HorizontalScrollSection>
+```
+
+
+📌 전체 화면 이미지 슬라이드
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+```tsx
+<HorizontalScrollSection>
+  <div style={{ backgroundImage: 'url(1.jpg)', backgroundSize: 'cover' }}>
+    <h2>Image 1</h2>
+  </div>
+  <div style={{ backgroundImage: 'url(2.jpg)', backgroundSize: 'cover' }}>
+    <h2>Image 2</h2>
+  </div>
+</HorizontalScrollSection>
+```
+
+
+═══════════════════════════════════════════════════════════════════
+         7. SECTION NAVIGATION (구역 네비) ⭐
+═══════════════════════════════════════════════════════════════════
+
+📌 기본 사용법
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+```tsx
+// 1. 섹션 생성 (id 필수)
+<section id="section1">내용...</section>
+<section id="section2">내용...</section>
+
+// 2. 네비게이션 추가
+<SectionNavigation
+  sections={[
+    { id: "section1", label: "섹션 1" },
+    { id: "section2", label: "섹션 2" }
+  ]}
+/>
+```
+
+
+📌 쇼핑몰 상세 페이지
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+```tsx
+<SectionNavigation
+  sections={[
+    { id: "info", label: "상품정보" },
+    { id: "detail", label: "상세정보" },
+    { id: "review", label: "리뷰" },
+    { id: "qna", label: "Q&A" },
+    { id: "exchange", label: "교환/반품" }
+  ]}
+/>
+
+<section id="info">상품 정보...</section>
+<section id="detail">상세 정보...</section>
+<section id="review">리뷰 목록...</section>
+<section id="qna">Q&A...</section>
+<section id="exchange">교환/반품 안내...</section>
+```
+
+
+📌 원페이지 사이트
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+```tsx
+<SectionNavigation
+  sections={[
+    { id: "home", label: "Home" },
+    { id: "about", label: "About" },
+    { id: "service", label: "Service" },
+    { id: "portfolio", label: "Portfolio" },
+    { id: "contact", label: "Contact" }
+  ]}
+/>
+```
+
+
+═══════════════════════════════════════════════════════════════════
+           8. SECTION STACKING (섹션 쌓기)
+═══════════════════════════════════════════════════════════════════
+
+📌 기본 사용법 (일반 모드)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+```tsx
+<SectionStacking
+  sections={[
+    <div style={{ background: '#FF6B6B' }}>섹션 1</div>,
+    <div style={{ background: '#4ECDC4' }}>섹션 2</div>,
+    <div style={{ background: '#45B7D1' }}>섹션 3</div>
+  ]}
+/>
+```
+
+동작: 스크롤하면 섹션1 위로 섹션2가 덮이면서 쌓임
+
+
+📌 쌓이는 간격 조절
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+// 간격 없음
+<SectionStacking
+  sections={sections}
+  gap={0}
+/>
+
+// 20px 간격
+<SectionStacking
+  sections={sections}
+  gap={20}
+/>
+
+// 50px 간격 (겹쳐 보임)
+<SectionStacking
+  sections={sections}
+  gap={50}
+/>
+
+
+📌 상단 여백 설정
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+// 네비게이션 있을 때
+<SectionStacking
+  sections={sections}
+  stickyHeight={60}  // 60px 띄움
+/>
+
+// 여백 없음
+<SectionStacking
+  sections={sections}
+  stickyHeight={0}
+/>
+
+
+📌 투명 모드 ⭐ (배경 없이 겹치기)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+```tsx
+<div style={{ background: 'linear-gradient(...)' }}>
+  <SectionStacking
+    sections={[
+      <div className="card">카드 1</div>,
+      <div className="card">카드 2</div>,
+      <div className="card">카드 3</div>
+    ]}
+    transparent={true}  // 배경 없이 겹침
+    gap={30}
+  />
+</div>
+```
+
+.card에 흰 배경, 그림자 주면 카드가 겹쳐 쌓이는 효과
+
+
+📌 실전 예제 - 스토리 전개
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+```tsx
+const story = [
+  <div style={{ background: '#FF6B6B', minHeight: '100vh', padding: '60px' }}>
+    <h2>2024년 시작</h2>
+    <p>작은 아이디어에서 시작했습니다</p>
+  </div>,
+  <div style={{ background: '#4ECDC4', minHeight: '100vh', padding: '60px' }}>
+    <h2>성장</h2>
+    <p>팀이 모였고 제품이 만들어졌습니다</p>
+  </div>,
+  <div style={{ background: '#45B7D1', minHeight: '100vh', padding: '60px' }}>
+    <h2>지금</h2>
+    <p>수천 명의 고객이 사용 중</p>
+  </div>
+];
+
+<SectionStacking sections={story} gap={20} />
+```
+
+
+═══════════════════════════════════════════════════════════════════
+              9. AOS (스크롤 애니메이션)
+═══════════════════════════════════════════════════════════════════
+
+📌 기본 사용법
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+```tsx
+<AOS animation="fade-up">
+  <div>내용</div>
+</AOS>
+```
+
+
+📌 모든 애니메이션 타입
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Fade 계열:
+<AOS animation="fade">기본 페이드</AOS>
+<AOS animation="fade-up">아래→위</AOS>
+<AOS animation="fade-down">위→아래</AOS>
+<AOS animation="fade-left">오른→왼</AOS>
+<AOS animation="fade-right">왼→오른</AOS>
+
+Slide 계열:
+<AOS animation="slide-up">슬라이드 업</AOS>
+<AOS animation="slide-down">슬라이드 다운</AOS>
+<AOS animation="slide-left">슬라이드 왼쪽</AOS>
+<AOS animation="slide-right">슬라이드 오른쪽</AOS>
+
+Zoom 계열:
+<AOS animation="zoom-in">줌 인</AOS>
+<AOS animation="zoom-out">줌 아웃</AOS>
+
+Flip 계열:
+<AOS animation="flip-left">플립 왼쪽</AOS>
+<AOS animation="flip-right">플립 오른쪽</AOS>
+
+
+📌 속도 조절
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+<AOS animation="fade-up" duration={300}>빠름</AOS>
+<AOS animation="fade-up" duration={600}>보통</AOS>
+<AOS animation="fade-up" duration={1200}>느림</AOS>
+
+
+📌 순차 등장 (Delay)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+```tsx
+<AOS animation="fade-up" delay={0}>
+  <div>첫 번째 (즉시)</div>
+</AOS>
+<AOS animation="fade-up" delay={200}>
+  <div>두 번째 (0.2초 후)</div>
+</AOS>
+<AOS animation="fade-up" delay={400}>
+  <div>세 번째 (0.4초 후)</div>
+</AOS>
+```
+
+
+📌 반복 실행
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+<AOS animation="fade-up" once={false}>
+  스크롤할 때마다 애니메이션
+</AOS>
+
+<AOS animation="fade-up" once={true}>
+  한 번만 실행 (기본)
+</AOS>
+
+
+📌 트리거 오프셋
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+<AOS animation="fade-up" offset={-100}>
+  100px 전에 시작
+</AOS>
+
+<AOS animation="fade-up" offset={100}>
+  100px 후에 시작
+</AOS>
+
+
+📌 실전 예제 - 카드 그리드
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+```tsx
+<div className="card-grid">
+  {cards.map((card, index) => (
+    <AOS
+      key={index}
+      animation="fade-up"
+      delay={index * 100}  // 순차적으로
+      duration={600}
+    >
+      <div className="card">
+        <img src={card.image} />
+        <h3>{card.title}</h3>
+      </div>
+    </AOS>
+  ))}
+</div>
+```
+
+
+═══════════════════════════════════════════════════════════════════
+            10. CARD 3D HOVER (3D 카드) ⭐
+═══════════════════════════════════════════════════════════════════
+
+📌 기본 사용법
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+```tsx
+<Card3DHover>
+  <div className="card">
+    카드 내용
+  </div>
+</Card3DHover>
+```
+
+
+📌 회전 강도 조절
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+<Card3DHover intensity={5}>약한 회전</Card3DHover>
+<Card3DHover intensity={15}>보통 (기본)</Card3DHover>
+<Card3DHover intensity={25}>강한 회전</Card3DHover>
+
+
+📌 제품 카드
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+```tsx
+<div className="product-grid">
+  {products.map(product => (
+    <Card3DHover intensity={15}>
+      <div className="product-card">
+        <img src={product.image} />
+        <h3>{product.name}</h3>
+        <p>{product.price}</p>
+        <button>구매하기</button>
+      </div>
+    </Card3DHover>
+  ))}
+</div>
+```
+
+
+📌 AOS와 조합
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+```tsx
+<AOS animation="fade-up">
+  <Card3DHover intensity={20}>
+    <div className="card">
+      스크롤 애니메이션 + 3D 효과
+    </div>
+  </Card3DHover>
+</AOS>
+```
+
+
+═══════════════════════════════════════════════════════════════════
+          11. MAGNETIC BUTTON (자석 버튼) ⭐
+═══════════════════════════════════════════════════════════════════
+
+📌 기본 사용법
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+```tsx
+<MagneticButton onClick={() => alert('클릭!')}>
+  Click Me
+</MagneticButton>
+```
+
+
+📌 자석 강도 조절
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+<MagneticButton strength={0.2}>약한 자석</MagneticButton>
+<MagneticButton strength={0.5}>보통 (기본)</MagneticButton>
+<MagneticButton strength={0.8}>강한 자석</MagneticButton>
+
+
+📌 CTA 버튼으로 사용
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+```tsx
+<MagneticButton
+  strength={0.6}
+  onClick={() => window.location.href = '/signup'}
+  className="cta-button"
+>
+  지금 시작하기 →
+</MagneticButton>
+```
+
+CSS:
+```css
+.cta-button {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 20px 40px;
+  font-size: 18px;
+  box-shadow: 0 8px 24px rgba(102, 126, 234, 0.4);
+}
+```
+
+
+═══════════════════════════════════════════════════════════════════
+           12. SCROLL COUNTER (카운터) ⭐
+═══════════════════════════════════════════════════════════════════
+
+📌 기본 사용법
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+```tsx
+<ScrollCounter end={1000} />
+```
+
+
+📌 접두사/접미사 추가
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+<ScrollCounter end={1000} suffix="+" />        // 1,000+
+<ScrollCounter end={95} suffix="%" />          // 95%
+<ScrollCounter end={5000} prefix="₩" />        // ₩5,000
+<ScrollCounter end={24} suffix="/7" />         // 24/7
+<ScrollCounter end={99} suffix=".9%" />        // 99.9%
+
+
+📌 속도 조절
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+<ScrollCounter end={1000} duration={1000} />   // 1초
+<ScrollCounter end={1000} duration={2000} />   // 2초 (기본)
+<ScrollCounter end={1000} duration={3000} />   // 3초
+
+
+📌 시작 숫자 설정
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+<ScrollCounter start={0} end={100} />     // 0→100
+<ScrollCounter start={50} end={100} />    // 50→100
+<ScrollCounter start={100} end={0} />     // 100→0 (감소)
+
+
+📌 실전 예제 - 통계 섹션
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+```tsx
+<section className="stats-section">
+  <div className="stat">
+    <ScrollCounter end={10000} suffix="+" duration={2000} />
+    <p>만족한 고객</p>
+  </div>
+  <div className="stat">
+    <ScrollCounter end={95} suffix="%" duration={2500} />
+    <p>재구매율</p>
+  </div>
+  <div className="stat">
+    <ScrollCounter end={24} suffix="/7" duration={1500} />
+    <p>고객 지원</p>
+  </div>
+</section>
+```
+
+
+═══════════════════════════════════════════════════════════════════
+         13. IMAGE COMPARISON (이미지 비교) ⭐
+═══════════════════════════════════════════════════════════════════
+
+📌 기본 사용법
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+```tsx
+<ImageComparison
+  beforeImage="before.jpg"
+  afterImage="after.jpg"
+/>
+```
+
+
+📌 라벨 변경
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+<ImageComparison
+  beforeImage="before.jpg"
+  afterImage="after.jpg"
+  beforeLabel="원본"
+  afterLabel="보정 후"
+/>
+
+<ImageComparison
+  beforeImage="old.jpg"
+  afterImage="new.jpg"
+  beforeLabel="리모델링 전"
+  afterLabel="리모델링 후"
+/>
+
+
+📌 활용 예시
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+1. 포토샵 전/후
+2. 리모델링 전/후
+3. 제품 비교 (A vs B)
+4. 필터 효과 비교
+5. 시간 경과 비교
+
+
+📌 실전 예제 - 제품 비교
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+```tsx
+<section className="comparison-section">
+  <h2>일반 vs 프리미엄</h2>
+  <ImageComparison
+    beforeImage="/products/standard.jpg"
+    afterImage="/products/premium.jpg"
+    beforeLabel="일반"
+    afterLabel="프리미엄"
+  />
+  <p>슬라이더를 움직여 차이를 확인하세요</p>
+</section>
+```
+
+
+═══════════════════════════════════════════════════════════════════
+         14. STICKY IMAGE WITH TEXT (이미지 고정) ⭐
+═══════════════════════════════════════════════════════════════════
+
+📌 기본 사용법
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+```tsx
+<StickyImageWithText
+  imageSrc="image.jpg"
+  textSections={[
+    <div><h2>섹션 1</h2><p>내용...</p></div>,
+    <div><h2>섹션 2</h2><p>내용...</p></div>
+  ]}
+/>
+```
+
+
+📌 이미지 위치 변경
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+// 이미지 왼쪽 (기본)
+<StickyImageWithText
+  imageSrc="image.jpg"
+  imagePosition="left"
+  textSections={sections}
+/>
+
+// 이미지 오른쪽
+<StickyImageWithText
+  imageSrc="image.jpg"
+  imagePosition="right"
+  textSections={sections}
+/>
+
+
+📌 여러 섹션 추가
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+```tsx
+const textSections = [
+  <div>
+    <h2>첫 번째 포인트</h2>
+    <p>설명...</p>
+    <ul>
+      <li>장점 1</li>
+      <li>장점 2</li>
+    </ul>
+  </div>,
+  <div>
+    <h2>두 번째 포인트</h2>
+    <p>설명...</p>
+  </div>,
+  <div>
+    <h2>세 번째 포인트</h2>
+    <p>설명...</p>
+  </div>
+];
+
+<StickyImageWithText
+  imageSrc="product.jpg"
+  imagePosition="left"
+  textSections={textSections}
+/>
+```
+
+
+📌 실전 예제 - 제품 스토리
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+```tsx
+<StickyImageWithText
+  imageSrc="/images/product-main.jpg"
+  imagePosition="left"
+  textSections={[
+    <div className="story-section">
+      <h2>디자인 철학</h2>
+      <p>
+        최소한의 디자인으로 최대의 기능을.
+        우리는 불필요한 것을 제거하고
+        본질에 집중합니다.
+      </p>
+    </div>,
+    <div className="story-section">
+      <h2>품질에 대한 집착</h2>
+      <p>
+        모든 제품은 100번 이상의 테스트를 거칩니다.
+        완벽한 품질만이 고객에게 전달됩니다.
+      </p>
+    </div>,
+    <div className="story-section">
+      <h2>지속 가능성</h2>
+      <p>
+        환경을 생각합니다.
+        재활용 가능한 소재로 만들어집니다.
+      </p>
+    </div>
+  ]}
+/>
+```
+
+
+═══════════════════════════════════════════════════════════════════
+            15. TEXT EFFECTS (텍스트 효과)
+═══════════════════════════════════════════════════════════════════
+
+📌 1. Reveal (드러나기)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+<TextEffect
+  text="텍스트가 드러납니다"
+  effect="reveal"
+  duration={1500}
+/>
+
+
+📌 2. Typing (타이핑)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+<TextEffect
+  text="한 글자씩 타이핑됩니다"
+  effect="typing"
+  duration={2000}
+/>
+
+
+📌 3. Character Disappear (글자 사라짐)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+<TextEffect
+  text="글자가 하나씩 사라집니다"
+  effect="character-disappear"
+  duration={2000}
+/>
+
+
+📌 4. Word by Word (단어별)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+<TextEffect
+  text="단어별로 나타나는 효과"
+  effect="word-by-word"
+  duration={2000}
+/>
+
+
+📌 5. Glitch (글리치)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+<TextEffect
+  text="글리치 효과"
+  effect="glitch"
+  duration={1500}
+/>
+
+
+📌 지연 시간 추가
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+<TextEffect
+  text="3초 후 나타남"
+  effect="reveal"
+  delay={3000}
+/>
+
+
+📌 반복 실행
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+<TextEffect
+  text="스크롤할 때마다"
+  effect="typing"
+  once={false}
+/>
+
+
+📌 실전 예제 - 히어로 섹션
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+```tsx
+<section className="hero">
+  <TextEffect
+    text="혁신적인 솔루션"
+    effect="reveal"
+    duration={1500}
+    className="hero-title"
+  />
+  <TextEffect
+    text="당신의 비즈니스를 성장시킵니다"
+    effect="typing"
+    duration={2500}
+    delay={1500}
+    className="hero-subtitle"
+  />
+</section>
+```
+
+
+═══════════════════════════════════════════════════════════════════
+            16. INTRO ANIMATION (인트로) ⭐
+═══════════════════════════════════════════════════════════════════
+
+📌 기본 사용법
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+```tsx
+const [showIntro, setShowIntro] = useState(true);
+
+{showIntro && (
+  <IntroAnimation
+    textLines={["Welcome", "to Our Site"]}
+    onComplete={() => setShowIntro(false)}
+  />
+)}
+
+<div className={!showIntro ? 'show' : 'hide'}>
+  메인 컨텐츠
+</div>
+```
+
+
+📌 텍스트 지속 시간
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+<IntroAnimation
+  textLines={["Brand", "Name"]}
+  textDuration={1000}  // 각 텍스트 1초
+/>
+
+
+📌 전환 속도
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+<IntroAnimation
+  textLines={["Fast", "Transition"]}
+  transitionDuration={800}   // 빠른 전환
+/>
+
+<IntroAnimation
+  textLines={["Slow", "Transition"]}
+  transitionDuration={2000}  // 느린 전환
+/>
+
+
+📌 줌인/줌아웃 효과
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+CSS로 제어:
+```css
+.home-page {
+  opacity: 0;
+  transform: scale(0.8);  /* 줌인 */
+}
+
+.home-page.zoom-in {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* 또는 줌아웃 */
+.home-page {
+  transform: scale(1.2);  /* 줌아웃 */
+}
+```
+
+
+═══════════════════════════════════════════════════════════════════
+               17. PARALLAX (패럴랙스)
+═══════════════════════════════════════════════════════════════════
+
+📌 기본 사용법
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+```tsx
+<Parallax>
+  <div>패럴랙스 컨텐츠</div>
+</Parallax>
+```
+
+
+📌 속도 조절
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+<Parallax speed={0.2}>매우 느림</Parallax>
+<Parallax speed={0.5}>보통 (기본)</Parallax>
+<Parallax speed={1}>빠름</Parallax>
+<Parallax speed={2}>매우 빠름</Parallax>
+
+
+📌 방향 설정
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+<Parallax direction="vertical">세로</Parallax>
+<Parallax direction="horizontal">가로</Parallax>
+
+
+📌 실전 예제 - 배경 이미지
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+```tsx
+<section className="hero-section">
+  <Parallax speed={0.5}>
+    <img src="bg.jpg" className="hero-bg" />
+  </Parallax>
+  <div className="hero-content">
+    <h1>제목</h1>
+  </div>
+</section>
+```
+
+CSS:
+```css
+.hero-section {
+  position: relative;
+  overflow: hidden;
+  height: 100vh;
+}
+
+.hero-bg {
+  position: absolute;
+  width: 100%;
+  height: 120vh;  /* 여유 공간 */
+  object-fit: cover;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+}
+```
+
+
+═══════════════════════════════════════════════════════════════════
+              18. SCROLL PROGRESS (진행도)
+═══════════════════════════════════════════════════════════════════
+
+📌 기본 사용법
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+```tsx
+<ScrollProgress />
+```
+
+
+📌 위치 변경
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+<ScrollProgress position="top" />     // 상단 (기본)
+<ScrollProgress position="bottom" />  // 하단
+
+
+📌 두께 변경
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+<ScrollProgress height={2} />   // 얇게
+<ScrollProgress height={4} />   // 보통 (기본)
+<ScrollProgress height={8} />   // 두껍게
+
+
+📌 색상 변경
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+<ScrollProgress color="#007aff" />  // 파란색
+<ScrollProgress color="#ff0000" />  // 빨간색
+<ScrollProgress color="#00ff00" />  // 초록색
+
+
+📌 배경 색상
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+<ScrollProgress
+  color="#007aff"
+  backgroundColor="rgba(0, 0, 0, 0.1)"
+/>
+
+
+📌 완전 커스텀
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+```tsx
+<ScrollProgress
+  position="top"
+  height={6}
+  color="linear-gradient(to right, #667eea, #764ba2)"
+  backgroundColor="rgba(255, 255, 255, 0.2)"
+/>
+```
+
+
+═══════════════════════════════════════════════════════════════════
+              19. STICKY (고정 요소)
+═══════════════════════════════════════════════════════════════════
+
+📌 기본 사용법
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+```tsx
+<Sticky>
+  <nav>네비게이션</nav>
+</Sticky>
+```
+
+
+📌 위치 설정
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+<Sticky top={0}>상단 고정</Sticky>
+<Sticky top={60}>60px 아래 고정</Sticky>
+<Sticky bottom={0}>하단 고정</Sticky>
+
+
+📌 Z-index 설정
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+<Sticky top={0} zIndex={1000}>
+  <nav>최상위 네비</nav>
+</Sticky>
+
+
+📌 실전 예제 - 헤더
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+```tsx
+<Sticky top={0} zIndex={1000}>
+  <header className="main-header">
+    <div className="logo">Logo</div>
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+</Sticky>
+```
+
+
+═══════════════════════════════════════════════════════════════════
+              실전 조합 예제 모음
+═══════════════════════════════════════════════════════════════════
+
+### 🎯 케이스 1: 프리미엄 제품 랜딩 페이지
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+```tsx
+function PremiumProductPage() {
+  const [showIntro, setShowIntro] = useState(true);
+
+  return (
+    <>
+      {/* 인트로 */}
+      {showIntro && (
+        <IntroAnimation
+          textLines={["Premium", "Collection"]}
+          onComplete={() => setShowIntro(false)}
+          textDuration={1200}
+        />
+      )}
+
+      {/* 메인 히어로 */}
+      <StickyImageZoom
+        imageSrc="/hero.jpg"
+        initialScale={0.2}
+        finalScale={1}
+        dimOpacity={0.6}
+        overlayContent={
+          <div>
+            <h1>2024 신제품</h1>
+            <p>완벽함의 새로운 기준</p>
+          </div>
+        }
+      />
+
+      {/* 제품 소개 */}
+      <ProductSwiper
+        slides={products}
+        textPosition="left"
+        stickyMode={true}
+        gradientOverlay={true}
+      />
+
+      {/* 통계 */}
+      <section className="stats">
+        <ScrollCounter end={50000} suffix="+" />
+        <p>만족한 고객</p>
+      </section>
+
+      {/* 이미지 공개 */}
+      <CurtainReveal imageSrc="/reveal.jpg" />
+    </>
+  );
+}
+```
+
+
+### 🎯 케이스 2: 쇼핑몰 상세 페이지
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+```tsx
+function ProductDetail() {
+  return (
+    <>
+      <ScrollProgress position="top" height={4} color="#000" />
+
+      <SectionNavigation
+        sections={[
+          { id: "info", label: "상품정보" },
+          { id: "detail", label: "상세정보" },
+          { id: "review", label: "리뷰" },
+          { id: "qna", label: "Q&A" }
+        ]}
+      />
+
+      <section id="info">
+        <Swiper
+          slides={productImages}
+          paginationType="dots"
+          navigation={true}
+        />
+      </section>
+
+      <section id="detail">
+        <StickyImageWithText
+          imageSrc="/detail.jpg"
+          imagePosition="left"
+          textSections={detailSections}
+        />
+      </section>
+
+      <section id="review">
+        <ImageComparison
+          beforeImage="/before.jpg"
+          afterImage="/after.jpg"
+          beforeLabel="사용 전"
+          afterLabel="사용 후"
+        />
+      </section>
+    </>
+  );
+}
+```
+
+
+### 🎯 케이스 3: 포트폴리오 사이트
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+```tsx
+function Portfolio() {
+  return (
+    <>
+      {/* 인트로 */}
+      <IntroAnimation
+        textLines={["Creative", "Designer"]}
+      />
+
+      {/* About */}
+      <TextColorTransition
+        lines={[
+          "안녕하세요",
+          "저는 디자이너",
+          "홍길동입니다"
+        ]}
+        endColor="#007aff"
+      />
+
+      {/* 작품들 */}
+      <HorizontalScrollSection>
+        {projects.map(project => (
+          <Card3DHover intensity={20}>
+            <div className="project">
+              <img src={project.image} />
+              <h3>{project.title}</h3>
+            </div>
+          </Card3DHover>
+        ))}
+      </HorizontalScrollSection>
+
+      {/* 스킬 */}
+      <section>
+        <AOS animation="fade-up">
+          <ScrollCounter end={5} suffix="년" />
+          <p>경력</p>
+        </AOS>
+      </section>
+
+      {/* 연락 */}
+      <CurtainReveal imageSrc="/contact-bg.jpg" />
+    </>
+  );
+}
+```
+
+
+═══════════════════════════════════════════════════════════════════
+              CSS 커스터마이징 전체 가이드
+═══════════════════════════════════════════════════════════════════
+
+### 방법 1: CSS 변수 사용
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+```css
+:root {
+  /* Swiper */
+  --swiper-navigation-size: 44px;
+  --swiper-navigation-color: #007aff;
+  --swiper-pagination-color: #007aff;
+  --swiper-pagination-bullet-size: 12px;
+  
+  /* AOS */
+  --aos-duration: 600ms;
+  --aos-delay: 0ms;
+  
+  /* Text Effect */
+  --text-effect-duration: 2000ms;
+}
+
+/* 브랜드 색상으로 변경 */
+:root {
+  --swiper-navigation-color: #ff6b6b;
+  --swiper-pagination-color: #ff6b6b;
+}
+```
+
+
+### 방법 2: className 사용
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+```tsx
+<Swiper className="custom-swiper" />
+```
+
+```css
+.custom-swiper {
+  border-radius: 20px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+.custom-swiper .swiper-button-prev,
+.custom-swiper .swiper-button-next {
+  background: black;
+  color: white;
+}
+
+.custom-swiper .swiper-pagination-dot.active {
+  background: red;
+  transform: scale(1.5);
+}
+```
+
+
+### 방법 3: 인라인 스타일
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+```tsx
+<div style={{ background: '#f5f5f5', padding: '40px' }}>
+  <Swiper ... />
+</div>
+```
+
+
+═══════════════════════════════════════════════════════════════════
+              반응형 커스터마이징
+═══════════════════════════════════════════════════════════════════
+
+📌 기본 반응형
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+모든 컴포넌트는 768px 이하에서 자동 최적화
+
+
+📌 커스텀 반응형
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+```css
+/* 데스크톱 */
+.my-component {
+  font-size: 48px;
+  padding: 60px;
+}
+
+/* 태블릿 */
+@media (max-width: 1024px) {
+  .my-component {
+    font-size: 36px;
+    padding: 40px;
+  }
+}
+
+/* 모바일 */
+@media (max-width: 768px) {
+  .my-component {
+    font-size: 24px;
+    padding: 20px;
+  }
+}
+```
+
+
+═══════════════════════════════════════════════════════════════════
+              성능 최적화 팁
+═══════════════════════════════════════════════════════════════════
+
+1. **이미지 최적화**
+   - WebP 포맷 사용
+   - 적절한 크기로 리사이즈
+   - Lazy Loading 적용
+
+2. **스크롤 성능**
+   - 모든 스크롤 이벤트는 passive (자동)
+   - requestAnimationFrame 사용 (자동)
+
+3. **메모리 관리**
+   - 컴포넌트 언마운트 시 자동 cleanup
+   - 타이머 자동 제거
+
+4. **애니메이션**
+   - will-change 속성 자동 적용
+   - GPU 가속 활용
+
+
+═══════════════════════════════════════════════════════════════════
+              문제 해결
+═══════════════════════════════════════════════════════════════════
+
+### Q: Swiper가 작동하지 않아요
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+A: 
+1. slides prop에 배열 전달 확인
+2. CSS 파일 import 확인
+3. 슬라이드가 비어있지 않은지 확인
+
+
+### Q: Sticky Image Zoom이 확대 안 돼요
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+A:
+1. 페이지 높이가 충분한지 확인 (300vh 자동 설정됨)
+2. 스크롤해보기
+3. initialScale이 너무 크지 않은지 확인
+
+
+### Q: Section Stacking이 쌓이지 않아요
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+A:
+1. sections prop 배열 확인
+2. 각 섹션에 minHeight: 100vh 설정 확인
+3. z-index가 제대로 적용되는지 확인
+
+
+### Q: Product Swiper 텍스트 안 보여요
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+A:
+1. slides 배열에 image, title, description 모두 있는지 확인
+2. gradientOverlay 설정 확인
+3. 콘솔에 에러 없는지 확인
+
+
+### Q: 반응형이 작동 안 해요
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+A:
+1. viewport meta 태그 확인:
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+2. 브라우저 개발자 도구로 확인
+3. 부모 요소의 overflow 확인
+
+
+═══════════════════════════════════════════════════════════════════
+              빠른 참조 - 모든 컴포넌트 Import
+═══════════════════════════════════════════════════════════════════
+
+```tsx
+// React - 모든 컴포넌트
+import {
+  // 기본
+  Swiper,
+  AOS,
+  TextEffect,
+  ScrollProgress,
+  Sticky,
+  Parallax,
+  
+  // 이미지
+  ImageZoomScroll,
+  StickyImageZoom,
+  CurtainReveal,
+  ImageComparison,
+  StickyImageWithText,
+  
+  // 스크롤
+  SectionStacking,
+  HorizontalScrollSection,
+  TextColorTransition,
+  
+  // 제품
+  ProductSwiper,
+  
+  // 인터랙티브
+  Card3DHover,
+  MagneticButton,
+  ScrollCounter,
+  SectionNavigation,
+  
+  // 특수
+  IntroAnimation,
+  ScrollSnapContainer,
+  ScrollSnapItem
+} from './components';
+
+// 훅
+import {
+  useIntersectionObserver,
+  useScrollProgress,
+  useScrollPosition
+} from './hooks';
+```
+
+
+═══════════════════════════════════════════════════════════════════
+              컴포넌트별 추천 용도
+═══════════════════════════════════════════════════════════════════
+
+Swiper              → 이미지 갤러리, 배너
+Product Swiper      → 제품 소개, 포트폴리오
+Sticky Image Zoom   → 메인 히어로, 브랜드 소개
+AOS                 → 모든 요소에 애니메이션
+Text Effects        → 제목, 강조 문구
+Text Color          → 브랜딩, 임팩트 메시지
+Curtain Reveal      → 신제품 공개, 이미지 드러내기
+Horizontal Scroll   → 프로젝트 목록, 타임라인
+Sticky Image+Text   → 제품 설명, 스토리텔링
+Section Stacking    → 섹션 분리, 비주얼 강조
+Section Navigation  → 쇼핑몰, 긴 페이지
+Card3DHover         → 카드 UI, 제품 카드
+MagneticButton      → CTA 버튼, 특별 버튼
+ScrollCounter       → 통계, 수치 강조
+Image Comparison    → Before/After, 비교
+IntroAnimation      → 사이트 시작 화면
+Parallax            → 배경 효과, 깊이감
+
+
+═══════════════════════════════════════════════════════════════════
+              추가 팁
+═══════════════════════════════════════════════════════════════════
+
+### 💡 Tip 1: 컴포넌트 조합의 힘
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+```tsx
+<AOS animation="fade-up">
+  <Card3DHover>
+    <div className="card">
+      AOS + 3D = 강력한 효과
+    </div>
+  </Card3DHover>
+</AOS>
+```
+
+
+### 💡 Tip 2: 색상 일관성
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+브랜드 색상을 CSS 변수로 한번에 관리:
+```css
+:root {
+  --brand-primary: #007aff;
+  --brand-secondary: #ff6b6b;
+}
+
+:root {
+  --swiper-pagination-color: var(--brand-primary);
+}
+```
+
+
+### 💡 Tip 3: 로딩 순서
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+1. IntroAnimation (즉시)
+2. StickyImageZoom (메인)
+3. 컨텐츠 (순차적 AOS)
+4. 통계 (ScrollCounter)
+5. 마무리 (CurtainReveal)
+
+
+### 💡 Tip 4: 모바일 최적화
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+```tsx
+// 모바일에서는 간단하게
+const isMobile = window.innerWidth <= 768;
+
+<ProductSwiper
+  slides={products}
+  stickyMode={!isMobile}  // 데스크톱만 Sticky
+  textPosition={isMobile ? "left" : "right"}
+/>
+```
+
+
+═══════════════════════════════════════════════════════════════════
+
+🎉 이제 모든 컴포넌트를 자유롭게 사용하세요!
+
+각 컴포넌트는 독립적으로 작동하며,
+원하는 대로 조합하여 창의적인 웹 경험을 만들 수 있습니다.
+
+브라우저에서 http://localhost:5173 접속하여
+16개 예제를 모두 확인하고 테스트해보세요!
+
+═══════════════════════════════════════════════════════════════════

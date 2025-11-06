@@ -1,0 +1,7 @@
+.section-stacking-container {
+  position: relative;
+}
+
+.section-stacking-item {
+  min-height: 100vh;
+}

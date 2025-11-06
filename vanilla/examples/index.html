@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Publisher Components - Vanilla Demo</title>
+
+    <!-- Component Styles -->
+    <link rel="stylesheet" href="../components/swiper/swiper.css" />
+    <link
+      rel="stylesheet"
+      href="../components/scroll-progress/scroll-progress.css"
+    />
+    <link rel="stylesheet" href="../components/aos/aos.css" />
+    <link
+      rel="stylesheet"
+      href="../components/image-zoom-scroll/image-zoom-scroll.css"
+    />
+    <link rel="stylesheet" href="../components/text-effect/text-effect.css" />
+    <link rel="stylesheet" href="../components/parallax/parallax.css" />
+    <link
+      rel="stylesheet"
+      href="../components/section-stacking/section-stacking.css"
+    />
+
+    <!-- Demo Styles -->
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+          "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+          "Helvetica Neue", sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        line-height: 1.6;
+      }
+
+      /* Sticky Navigation */
+      .sticky-nav {
+        position: sticky;
+        top: 0;
+        background: white;
+        padding: 20px 40px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+      }
+
+      .sticky-nav h1 {
+        font-size: 24px;
+        color: #333;
+      }
+
+      /* Sections */
+      .section {
+        padding: 80px 40px;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .section-title {
+        font-size: 36px;
+        margin-bottom: 40px;
+        text-align: center;
+        color: #333;
+      }
+
+      /* Swiper Section */
+      .swiper-section {
+        background: #f8f9fa;
+      }
+
+      .swiper-demo {
+        width: 100%;
+        max-width: 900px;
+        height: 500px;
+      }
+
+      .swiper-container {
+        width: 100%;
+        height: 100%;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      }
+
+      .slide {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        text-align: center;
+        padding: 40px;
+      }
+
+      .slide h2 {
+        font-size: 48px;
+        margin-bottom: 20px;
+      }
+
+      .slide p {
+        font-size: 20px;
+        opacity: 0.9;
+      }
+
+      /* AOS Section */
+      .aos-section {
+        background: white;
+      }
+
+      .aos-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 30px;
+        width: 100%;
+        max-width: 1200px;
+      }
+
+      .aos-card {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        padding: 40px;
+        border-radius: 12px;
+        text-align: center;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      }
+
+      .aos-card h3 {
+        font-size: 24px;
+        margin-bottom: 10px;
+      }
+
+      /* Text Effects Section */
+      .text-effects-section {
+        background: #f8f9fa;
+      }
+
+      .text-effects-demo {
+        display: flex;
+        flex-direction: column;
+        gap: 60px;
+        font-size: 32px;
+        font-weight: bold;
+        color: #333;
+        text-align: center;
+        width: 100%;
+        max-width: 800px;
+      }
+
+      .text-effect {
+        min-height: 50px;
+      }
+
+      /* Zoom Content */
+      .zoom-content {
+        text-align: center;
+      }
+
+      .zoom-content h2 {
+        font-size: 48px;
+        margin-bottom: 20px;
+        text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+      }
+
+      .zoom-content p {
+        font-size: 24px;
+        text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+      }
+
+      /* Parallax Section */
+      .parallax-section {
+        background: #2c3e50;
+        color: white;
+        min-height: 80vh;
+      }
+
+      #parallax-demo {
+        text-align: center;
+        padding: 60px;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 12px;
+        backdrop-filter: blur(10px);
+      }
+
+      #parallax-demo h3 {
+        font-size: 36px;
+        margin-bottom: 20px;
+      }
+
+      #parallax-demo p {
+        font-size: 20px;
+      }
+
+      /* Stacking Sections */
+      .stacking-section {
+        width: 100%;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        text-align: center;
+        padding: 60px;
+      }
+
+      .stacking-section h2 {
+        font-size: 48px;
+        margin-bottom: 20px;
+      }
+
+      .stacking-section p {
+        font-size: 24px;
+      }
+
+      /* Footer */
+      .footer {
+        background: #333;
+        color: white;
+        padding: 40px;
+        text-align: center;
+      }
+
+      /* Responsive */
+      @media (max-width: 768px) {
+        .section {
+          padding: 60px 20px;
+        }
+
+        .section-title {
+          font-size: 28px;
+        }
+
+        .swiper-demo {
+          height: 400px;
+        }
+
+        .slide h2 {
+          font-size: 32px;
+        }
+
+        .slide p {
+          font-size: 16px;
+        }
+
+        .aos-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .text-effects-demo {
+          font-size: 24px;
+        }
+
+        .zoom-content h2 {
+          font-size: 32px;
+        }
+
+        .zoom-content p {
+          font-size: 18px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Sticky Navigation -->
+    <nav class="sticky-nav">
+      <h1>Publisher Components Demo - Vanilla JS</h1>
+    </nav>
+
+    <!-- Swiper Section -->
+    <section class="section swiper-section">
+      <h2 class="section-title">Swiper with Gauge Pagination</h2>
+      <div class="swiper-demo">
+        <div class="swiper-container" id="swiper-demo">
+          <div
+            class="swiper-slide slide"
+            style="
+              background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            "
+          >
+            <h2>Slide 1</h2>
+            <p>Gauge Pagination으로 진행도를 확인하세요</p>
+          </div>
+          <div
+            class="swiper-slide slide"
+            style="
+              background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            "
+          >
+            <h2>Slide 2</h2>
+            <p>자동으로 슬라이드가 전환됩니다</p>
+          </div>
+          <div
+            class="swiper-slide slide"
+            style="
+              background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            "
+          >
+            <h2>Slide 3</h2>
+            <p>다양한 Pagination 타입을 지원합니다</p>
+          </div>
+          <div
+            class="swiper-slide slide"
+            style="
+              background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+            "
+          >
+            <h2>Slide 4</h2>
+            <p>커스터마이징이 가능합니다</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- AOS Section -->
+    <section class="section aos-section" data-aos-init>
+      <h2 class="section-title">Scroll Animations (AOS)</h2>
+      <div class="aos-grid">
+        <div data-aos="fade-up" class="aos-card">
+          <h3>Fade Up</h3>
+          <p>아래에서 위로 나타납니다</p>
+        </div>
+        <div data-aos="fade-left" data-aos-delay="200" class="aos-card">
+          <h3>Fade Left</h3>
+          <p>오른쪽에서 왼쪽으로</p>
+        </div>
+        <div data-aos="zoom-in" data-aos-delay="400" class="aos-card">
+          <h3>Zoom In</h3>
+          <p>확대되며 나타납니다</p>
+        </div>
+        <div data-aos="flip-left" data-aos-delay="600" class="aos-card">
+          <h3>Flip Left</h3>
+          <p>플립 애니메이션</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Text Effects Section -->
+    <section class="section text-effects-section">
+      <h2 class="section-title">Text Effects</h2>
+      <div class="text-effects-demo">
+        <div id="text-reveal"></div>
+        <div id="text-typing"></div>
+        <div id="text-disappear"></div>
+      </div>
+    </section>
+
+    <!-- Image Zoom Scroll Section -->
+    <div id="image-zoom-demo"></div>
+
+    <!-- Parallax Section -->
+    <section class="section parallax-section">
+      <h2 class="section-title">Parallax Effect</h2>
+      <div id="parallax-demo">
+        <h3>패럴랙스 효과</h3>
+        <p>스크롤 속도와 다르게 움직입니다</p>
+      </div>
+    </section>
+
+    <!-- Section Stacking -->
+    <div id="stacking-container">
+      <div class="stacking-section" style="background: #ff6b6b">
+        <h2>Section 1</h2>
+        <p>스크롤하면 다음 섹션이 쌓입니다</p>
+      </div>
+      <div class="stacking-section" style="background: #4ecdc4">
+        <h2>Section 2</h2>
+        <p>각 섹션이 겹쳐서 보입니다</p>
+      </div>
+      <div class="stacking-section" style="background: #45b7d1">
+        <h2>Section 3</h2>
+        <p>창의적인 레이아웃을 만들 수 있습니다</p>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <p>Publisher Components Library - Vanilla JavaScript</p>
+    </footer>
+
+    <!-- Component Scripts -->
+    <script src="../components/swiper/swiper.js"></script>
+    <script src="../components/scroll-progress/scroll-progress.js"></script>
+    <script src="../components/aos/aos.js"></script>
+    <script src="../components/image-zoom-scroll/image-zoom-scroll.js"></script>
+    <script src="../components/text-effect/text-effect.js"></script>
+    <script src="../components/parallax/parallax.js"></script>
+    <script src="../components/section-stacking/section-stacking.js"></script>
+
+    <!-- Initialize Components -->
+    <script>
+      // Initialize Scroll Progress
+      new ScrollProgress({
+        position: "top",
+        height: 4,
+        color: "#007aff"
+      });
+
+      // Initialize Swiper
+      new CustomSwiper({
+        container: "#swiper-demo",
+        paginationType: "gauge",
+        autoplay: true,
+        autoplayDelay: 3000,
+        navigation: true
+      });
+
+      // Initialize Text Effects
+      new TextEffect({
+        container: "#text-reveal",
+        text: "텍스트가 드러나는 효과",
+        effect: "reveal",
+        duration: 1500
+      });
+
+      new TextEffect({
+        container: "#text-typing",
+        text: "한 글자씩 타이핑되는 효과",
+        effect: "typing",
+        duration: 2000
+      });
+
+      new TextEffect({
+        container: "#text-disappear",
+        text: "글자가 사라지는 효과",
+        effect: "character-disappear",
+        duration: 2000
+      });
+
+      // Initialize Image Zoom Scroll
+      new ImageZoomScroll({
+        container: "#image-zoom-demo",
+        imageSrc:
+          "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1920",
+        imageAlt: "Mountain landscape",
+        initialScale: 0.6,
+        finalScale: 1,
+        showDimOverlay: true,
+        dimOpacity: 0.6,
+        overlayContent: `
+        <div class="zoom-content">
+          <h2>스크롤하면 이미지가 확대됩니다</h2>
+          <p>딤 처리와 함께 텍스트가 나타납니다</p>
+        </div>
+      `
+      });
+
+      // Initialize Parallax
+      new Parallax({
+        container: "#parallax-demo",
+        speed: 0.5,
+        direction: "vertical"
+      });
+
+      // Initialize Section Stacking
+      new SectionStacking({
+        container: "#stacking-container",
+        sectionSelector: ".stacking-section",
+        stickyHeight: 60,
+        gap: 20
+      });
+    </script>
+  </body>
+</html>
