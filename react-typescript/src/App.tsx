@@ -20,6 +20,7 @@ import { AdvancedExample } from "./pages/AdvancedExample";
 import { FullPageScrollExample } from "./pages/FullPageScrollExample";
 import { CarouselExample } from "./pages/CarouselExample";
 import { TabsExample } from "./pages/TabsExample";
+import { CreativeEffectsExample } from "./pages/CreativeEffectsExample";
 import "./App.css";
 
 function App() {
@@ -49,6 +50,7 @@ function App() {
         <Route path="/full-page-scroll" element={<FullPageScrollExample />} />
         <Route path="/carousel" element={<CarouselExample />} />
         <Route path="/tabs" element={<TabsExample />} />
+        <Route path="/creative-effects" element={<CreativeEffectsExample />} />
       </Routes>
     </BrowserRouter>
   );

@@ -25,6 +25,18 @@ export { ImageComparison } from "./ImageComparison";
 export { Carousel } from "./Carousel";
 export { InfiniteCarousel } from "./InfiniteCarousel";
 export { Tabs } from "./Tabs";
+export { TextScramble } from "./TextScramble";
+export { SplitText } from "./SplitText";
+export { MorphingBlob } from "./MorphingBlob";
+export { RippleButton } from "./RippleButton";
+export { Typewriter } from "./Typewriter";
+export { TextGradientAnimation } from "./TextGradientAnimation";
+export { ScrollProgressCircle } from "./ScrollProgressCircle";
+export { Toast, useToast } from "./Toast";
+export { SVGDraw } from "./SVGDraw";
+export { ParticleEffect } from "./ParticleEffect";
+export { SmoothScroll } from "./SmoothScroll";
+export { ImageReveal } from "./ImageReveal";
 
 // Export types
 export type * from "../types";

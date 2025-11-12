@@ -1,0 +1,24 @@
+.morphing-blob-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.morphing-blob {
+  filter: blur(20px);
+  animation: blobRotate 20s linear infinite;
+}
+
+@keyframes blobRotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.morphing-blob path {
+  transition: all 0.3s ease;
+}

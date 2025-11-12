@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Text Scramble - Vanilla JS</title>
+    <link
+      rel="stylesheet"
+      href="../components/text-scramble/text-scramble.css"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          sans-serif;
+        background: #0f0f1e;
+        color: white;
+        min-height: 100vh;
+        padding: 40px 20px;
+      }
+
+      .nav {
+        max-width: 1200px;
+        margin: 0 auto 40px;
+      }
+
+      .back-btn {
+        display: inline-block;
+        padding: 12px 24px;
+        background: #667eea;
+        color: white;
+        text-decoration: none;
+        border-radius: 8px;
+        transition: background 0.3s;
+      }
+
+      .back-btn:hover {
+        background: #5568d3;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      h1 {
+        font-size: 48px;
+        margin-bottom: 20px;
+        text-align: center;
+      }
+
+      .description {
+        text-align: center;
+        font-size: 18px;
+        color: #aaa;
+        margin-bottom: 60px;
+      }
+
+      .demo-section {
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 16px;
+        padding: 60px 40px;
+        margin-bottom: 40px;
+      }
+
+      .demo-section h2 {
+        font-size: 24px;
+        margin-bottom: 30px;
+        color: #667eea;
+      }
+
+      .demo-content {
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
+        align-items: center;
+      }
+
+      .scramble-demo {
+        font-size: 48px;
+        font-weight: bold;
+      }
+
+      .code-block {
+        background: #1a1a2e;
+        border-radius: 8px;
+        padding: 20px;
+        margin-top: 20px;
+        overflow-x: auto;
+      }
+
+      .code-block pre {
+        color: #00ff41;
+        font-family: "Courier New", monospace;
+        font-size: 14px;
+        line-height: 1.6;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="nav">
+      <a href="index.html" class="back-btn">← 메인으로</a>
+    </div>
+
+    <div class="container">
+      <h1>⚡ Text Scramble Effect</h1>
+      <p class="description">해커/사이버펑크 스타일의 텍스트 스크램블 효과</p>
+
+      <!-- Auto Trigger -->
+      <div class="demo-section">
+        <h2>1. Auto Trigger (자동 실행)</h2>
+        <div class="demo-content">
+          <span id="scramble1" class="scramble-demo" style="color: #00ff41">
+            CYBER PUNK STYLE
+          </span>
+        </div>
+        <div class="code-block">
+          <pre>
+new TextScramble(element, {
+  trigger: 'auto',
+  speed: 50,
+  delay: 0
+});</pre
+          >
+        </div>
+      </div>
+
+      <!-- Click Trigger -->
+      <div class="demo-section">
+        <h2>2. Click Trigger (클릭 시 실행)</h2>
+        <div class="demo-content">
+          <span id="scramble2" class="scramble-demo" style="color: #0ff">
+            Click Me to Scramble!
+          </span>
+        </div>
+        <div class="code-block">
+          <pre>
+new TextScramble(element, {
+  trigger: 'click',
+  speed: 40
+});</pre
+          >
+        </div>
+      </div>
+
+      <!-- Hover Trigger -->
+      <div class="demo-section">
+        <h2>3. Hover Trigger (마우스 올릴 때 실행)</h2>
+        <div class="demo-content">
+          <span id="scramble3" class="scramble-demo" style="color: #ff0080">
+            Hover Over Me!
+          </span>
+        </div>
+        <div class="code-block">
+          <pre>
+new TextScramble(element, {
+  trigger: 'hover',
+  speed: 30
+});</pre
+          >
+        </div>
+      </div>
+
+      <!-- Custom Characters -->
+      <div class="demo-section">
+        <h2>4. Custom Characters (커스텀 문자)</h2>
+        <div class="demo-content">
+          <span id="scramble4" class="scramble-demo" style="color: #ffa500">
+            CUSTOM CHARS
+          </span>
+        </div>
+        <div class="code-block">
+          <pre>
+new TextScramble(element, {
+  trigger: 'auto',
+  characters: '01',  // 0과 1만 사용
+  speed: 30,
+  delay: 1000
+});</pre
+          >
+        </div>
+      </div>
+    </div>
+
+    <script src="../components/text-scramble/text-scramble.js"></script>
+    <script>
+      new TextScramble(document.getElementById("scramble1"), {
+        trigger: "auto",
+        speed: 50
+      });
+
+      new TextScramble(document.getElementById("scramble2"), {
+        trigger: "click",
+        speed: 40
+      });
+
+      new TextScramble(document.getElementById("scramble3"), {
+        trigger: "hover",
+        speed: 30
+      });
+
+      new TextScramble(document.getElementById("scramble4"), {
+        trigger: "auto",
+        characters: "01",
+        speed: 30,
+        delay: 1000
+      });
+    </script>
+  </body>
+</html>

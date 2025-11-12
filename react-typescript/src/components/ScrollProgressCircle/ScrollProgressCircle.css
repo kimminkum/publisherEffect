@@ -1,0 +1,40 @@
+.scroll-progress-circle {
+  position: fixed;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.scroll-progress-circle:hover {
+  transform: scale(1.1);
+}
+
+.scroll-progress-top-right {
+  top: 20px;
+  right: 20px;
+}
+
+.scroll-progress-top-left {
+  top: 20px;
+  left: 20px;
+}
+
+.scroll-progress-bottom-right {
+  bottom: 20px;
+  right: 20px;
+}
+
+.scroll-progress-bottom-left {
+  bottom: 20px;
+  left: 20px;
+}
+
+.progress-percentage {
+  position: absolute;
+  font-size: 12px;
+  font-weight: 600;
+  color: #333;
+}

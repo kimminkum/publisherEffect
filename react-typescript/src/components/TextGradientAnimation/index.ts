@@ -1,0 +1,1 @@
+export { TextGradientAnimation } from "./TextGradientAnimation";

@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Typewriter - Vanilla JS</title>
+    <link rel="stylesheet" href="../components/typewriter/typewriter.css" />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          sans-serif;
+        background: #1a1a2e;
+        color: white;
+        min-height: 100vh;
+        padding: 40px 20px;
+      }
+
+      .nav {
+        max-width: 1200px;
+        margin: 0 auto 40px;
+      }
+
+      .back-btn {
+        display: inline-block;
+        padding: 12px 24px;
+        background: #667eea;
+        color: white;
+        text-decoration: none;
+        border-radius: 8px;
+        transition: background 0.3s;
+      }
+
+      .back-btn:hover {
+        background: #5568d3;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      h1 {
+        font-size: 48px;
+        margin-bottom: 20px;
+        text-align: center;
+      }
+
+      .section {
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 16px;
+        padding: 80px 40px;
+        margin-bottom: 40px;
+        min-height: 300px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .section h2 {
+        font-size: 24px;
+        margin-bottom: 40px;
+        color: #667eea;
+      }
+
+      .typewriter-demo {
+        font-size: 48px;
+        font-weight: 600;
+        text-align: center;
+        min-height: 80px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="nav">
+      <a href="index.html" class="back-btn">← 메인으로</a>
+    </div>
+
+    <div class="container">
+      <h1>⌨️ Typewriter Effect</h1>
+
+      <div class="section">
+        <h2>기본 타자기 효과</h2>
+        <div id="typewriter1" class="typewriter-demo"></div>
+      </div>
+
+      <div class="section">
+        <h2>빠른 속도</h2>
+        <div
+          id="typewriter2"
+          class="typewriter-demo"
+          style="color: #00ff41"
+        ></div>
+      </div>
+
+      <div class="section">
+        <h2>느린 속도</h2>
+        <div
+          id="typewriter3"
+          class="typewriter-demo"
+          style="color: #f093fb"
+        ></div>
+      </div>
+
+      <div class="section">
+        <h2>커스텀 커서</h2>
+        <div
+          id="typewriter4"
+          class="typewriter-demo"
+          style="color: #4facfe"
+        ></div>
+      </div>
+    </div>
+
+    <script src="../components/typewriter/typewriter.js"></script>
+    <script>
+      new Typewriter(document.getElementById("typewriter1"), {
+        texts: [
+          "Welcome to our website",
+          "We create amazing experiences",
+          "Discover endless possibilities",
+          "Let's build something great"
+        ],
+        speed: 100,
+        deleteSpeed: 50,
+        delayBetween: 2000,
+        loop: true
+      });
+
+      new Typewriter(document.getElementById("typewriter2"), {
+        texts: ["Fast typing...", "Speed is key!", "Quick and smooth"],
+        speed: 50,
+        deleteSpeed: 30,
+        delayBetween: 1500,
+        loop: true
+      });
+
+      new Typewriter(document.getElementById("typewriter3"), {
+        texts: ["Slow and steady...", "Take your time", "Enjoy the moment"],
+        speed: 200,
+        deleteSpeed: 100,
+        delayBetween: 3000,
+        loop: true
+      });
+
+      new Typewriter(document.getElementById("typewriter4"), {
+        texts: ["Custom cursor ▌", "Different style", "More options"],
+        speed: 100,
+        deleteSpeed: 50,
+        delayBetween: 2000,
+        loop: true,
+        cursorChar: "▌"
+      });
+    </script>
+  </body>
+</html>

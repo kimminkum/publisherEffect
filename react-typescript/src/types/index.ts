@@ -282,3 +282,135 @@ export interface TabsProps {
   animated?: boolean;
   className?: string;
 }
+
+// Text Scramble Types
+export interface TextScrambleProps {
+  text: string;
+  speed?: number;
+  scrambleSpeed?: number;
+  characters?: string;
+  trigger?: "auto" | "click" | "hover";
+  delay?: number;
+  onComplete?: () => void;
+  className?: string;
+}
+
+// Split Text Types
+export interface SplitTextProps {
+  text: string;
+  animation?:
+    | "fade-up"
+    | "fade-in"
+    | "scale"
+    | "rotate"
+    | "slide-left"
+    | "bounce";
+  staggerDelay?: number;
+  splitBy?: "char" | "word" | "line";
+  triggerOnce?: boolean;
+  className?: string;
+}
+
+// Morphing Blob Types
+export interface MorphingBlobProps {
+  size?: number;
+  colors?: string[];
+  speed?: number;
+  blur?: number;
+  className?: string;
+}
+
+// Ripple Button Types
+export interface RippleButtonProps
+  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  children: React.ReactNode;
+  rippleColor?: string;
+  duration?: number;
+}
+
+// Typewriter Types
+export interface TypewriterProps {
+  texts: string[];
+  speed?: number;
+  deleteSpeed?: number;
+  delayBetween?: number;
+  loop?: boolean;
+  showCursor?: boolean;
+  cursorChar?: string;
+  className?: string;
+}
+
+// Text Gradient Animation Types
+export interface TextGradientAnimationProps {
+  text: string;
+  colors?: string[];
+  speed?: number;
+  direction?: "left-right" | "right-left" | "top-bottom" | "bottom-top";
+  className?: string;
+}
+
+// Scroll Progress Circle Types
+export interface ScrollProgressCircleProps {
+  size?: number;
+  strokeWidth?: number;
+  color?: string;
+  backgroundColor?: string;
+  position?: "top-right" | "top-left" | "bottom-right" | "bottom-left";
+  showPercentage?: boolean;
+  className?: string;
+}
+
+// Toast Types
+export interface ToastProps {
+  message: string;
+  type?: "success" | "error" | "warning" | "info";
+  duration?: number;
+  position?:
+    | "top-right"
+    | "top-left"
+    | "bottom-right"
+    | "bottom-left"
+    | "top-center"
+    | "bottom-center";
+  onClose?: () => void;
+  showCloseButton?: boolean;
+}
+
+// SVG Draw Types
+export interface SVGDrawProps {
+  children: React.ReactNode;
+  duration?: number;
+  delay?: number;
+  strokeColor?: string;
+  strokeWidth?: number;
+  triggerOnce?: boolean;
+  className?: string;
+}
+
+// Particle Effect Types
+export interface ParticleEffectProps {
+  color?: string;
+  particleCount?: number;
+  particleSize?: number;
+  speed?: number;
+  followMouse?: boolean;
+  className?: string;
+}
+
+// Smooth Scroll Types
+export interface SmoothScrollProps {
+  children: React.ReactNode;
+  speed?: number;
+  smoothness?: number;
+  className?: string;
+}
+
+// Image Reveal Types
+export interface ImageRevealProps {
+  src: string;
+  alt?: string;
+  direction?: "left" | "right" | "top" | "bottom";
+  duration?: number;
+  delay?: number;
+  className?: string;
+}

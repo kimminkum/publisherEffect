@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Split Text - Vanilla JS</title>
+    <link rel="stylesheet" href="../components/split-text/split-text.css" />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          sans-serif;
+        background: #f5f5f5;
+        padding: 40px 20px;
+      }
+
+      .nav {
+        max-width: 1200px;
+        margin: 0 auto 40px;
+      }
+
+      .back-btn {
+        display: inline-block;
+        padding: 12px 24px;
+        background: #667eea;
+        color: white;
+        text-decoration: none;
+        border-radius: 8px;
+        transition: background 0.3s;
+      }
+
+      .back-btn:hover {
+        background: #5568d3;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      h1 {
+        font-size: 48px;
+        margin-bottom: 20px;
+        text-align: center;
+      }
+
+      .section {
+        background: white;
+        border-radius: 16px;
+        padding: 60px 40px;
+        margin-bottom: 40px;
+        min-height: 400px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .section h2 {
+        font-size: 24px;
+        margin-bottom: 40px;
+        color: #667eea;
+      }
+
+      .demo-text {
+        font-size: 48px;
+        font-weight: bold;
+        text-align: center;
+        max-width: 800px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="nav">
+      <a href="index.html" class="back-btn">← 메인으로</a>
+    </div>
+
+    <div class="container">
+      <h1>📝 Split Text Animation</h1>
+
+      <div class="section">
+        <h2>Fade Up (글자별)</h2>
+        <div id="text1" class="demo-text">Beautiful Typography</div>
+      </div>
+
+      <div class="section">
+        <h2>Scale (단어별)</h2>
+        <div id="text2" class="demo-text" style="color: #667eea">
+          Word by word animation
+        </div>
+      </div>
+
+      <div class="section">
+        <h2>Rotate (글자별)</h2>
+        <div id="text3" class="demo-text" style="color: #f093fb">
+          Rotating characters effect
+        </div>
+      </div>
+
+      <div class="section">
+        <h2>Bounce (글자별)</h2>
+        <div id="text4" class="demo-text" style="color: #4facfe">
+          Bouncing text animation
+        </div>
+      </div>
+
+      <div class="section">
+        <h2>Slide Left (단어별)</h2>
+        <div id="text5" class="demo-text" style="color: #43e97b">
+          Sliding from right to left
+        </div>
+      </div>
+    </div>
+
+    <script src="../components/split-text/split-text.js"></script>
+    <script>
+      new SplitText(document.getElementById("text1"), {
+        animation: "fade-up",
+        staggerDelay: 50,
+        splitBy: "char"
+      });
+
+      new SplitText(document.getElementById("text2"), {
+        animation: "scale",
+        staggerDelay: 100,
+        splitBy: "word"
+      });
+
+      new SplitText(document.getElementById("text3"), {
+        animation: "rotate",
+        staggerDelay: 40,
+        splitBy: "char"
+      });
+
+      new SplitText(document.getElementById("text4"), {
+        animation: "bounce",
+        staggerDelay: 60,
+        splitBy: "char"
+      });
+
+      new SplitText(document.getElementById("text5"), {
+        animation: "slide-left",
+        staggerDelay: 80,
+        splitBy: "word"
+      });
+    </script>
+  </body>
+</html>

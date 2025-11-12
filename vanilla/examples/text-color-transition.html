@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Text Color Transition - Vanilla JS</title>
+    <link
+      rel="stylesheet"
+      href="../components/text-color-transition/text-color-transition.css"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          sans-serif;
+        background: #f5f5f5;
+      }
+
+      .nav {
+        position: fixed;
+        top: 20px;
+        left: 20px;
+        z-index: 1000;
+      }
+
+      .back-btn {
+        display: inline-block;
+        padding: 12px 24px;
+        background: #667eea;
+        color: white;
+        text-decoration: none;
+        border-radius: 8px;
+        transition: background 0.3s;
+      }
+
+      .back-btn:hover {
+        background: #5568d3;
+      }
+
+      .section {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 80px 40px;
+      }
+
+      .text-color-transition {
+        max-width: 800px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="nav">
+      <a href="index.html" class="back-btn">← 메인으로</a>
+    </div>
+
+    <div class="section">
+      <div class="text-color-transition" id="text1">
+        <div>스크롤하면서</div>
+        <div>텍스트 색상이</div>
+        <div>변하는 효과</div>
+      </div>
+    </div>
+
+    <div class="section" style="background: white">
+      <div class="text-color-transition" id="text2">
+        <div>다른 색상으로</div>
+        <div>전환되는</div>
+        <div>멋진 효과</div>
+      </div>
+    </div>
+
+    <div class="section" style="background: #667eea">
+      <div class="text-color-transition" id="text3">
+        <div>마지막</div>
+        <div>예제</div>
+        <div>입니다</div>
+      </div>
+    </div>
+
+    <script src="../components/text-color-transition/text-color-transition.js"></script>
+    <script>
+      new TextColorTransition("#text1", {
+        startColor: "#999",
+        endColor: "#000"
+      });
+
+      new TextColorTransition("#text2", {
+        startColor: "#ccc",
+        endColor: "#667eea"
+      });
+
+      new TextColorTransition("#text3", {
+        startColor: "rgba(255,255,255,0.3)",
+        endColor: "#ffffff"
+      });
+    </script>
+  </body>
+</html>

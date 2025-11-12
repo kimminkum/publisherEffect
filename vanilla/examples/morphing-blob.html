@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Morphing Blob - Vanilla JS</title>
+    <link
+      rel="stylesheet"
+      href="../components/morphing-blob/morphing-blob.css"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          sans-serif;
+        overflow-x: hidden;
+      }
+
+      .nav {
+        position: fixed;
+        top: 20px;
+        left: 20px;
+        z-index: 1000;
+      }
+
+      .back-btn {
+        display: inline-block;
+        padding: 12px 24px;
+        background: rgba(255, 255, 255, 0.2);
+        backdrop-filter: blur(10px);
+        color: white;
+        text-decoration: none;
+        border-radius: 8px;
+        transition: background 0.3s;
+      }
+
+      .back-btn:hover {
+        background: rgba(255, 255, 255, 0.3);
+      }
+
+      .section {
+        position: relative;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 80px 40px;
+      }
+
+      .blob-container {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        opacity: 0.3;
+      }
+
+      h1 {
+        font-size: 72px;
+        color: white;
+        text-align: center;
+        position: relative;
+        z-index: 2;
+        text-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+        margin-bottom: 20px;
+      }
+
+      .description {
+        font-size: 24px;
+        color: white;
+        text-align: center;
+        position: relative;
+        z-index: 2;
+        text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="nav">
+      <a href="index.html" class="back-btn">← 메인으로</a>
+    </div>
+
+    <!-- Purple Gradient -->
+    <div
+      class="section"
+      style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%)"
+    >
+      <div class="blob-container" id="blob1"></div>
+      <h1>🌊 Morphing Blob</h1>
+      <p class="description">유동적으로 변하는 SVG 도형</p>
+    </div>
+
+    <!-- Pink Gradient -->
+    <div
+      class="section"
+      style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%)"
+    >
+      <div class="blob-container" id="blob2"></div>
+      <h1>Pink Wave</h1>
+      <p class="description">다른 색상 조합</p>
+    </div>
+
+    <!-- Blue Gradient -->
+    <div
+      class="section"
+      style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)"
+    >
+      <div class="blob-container" id="blob3"></div>
+      <h1>Ocean Blue</h1>
+      <p class="description">큰 크기의 블롭</p>
+    </div>
+
+    <!-- Green Gradient -->
+    <div
+      class="section"
+      style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)"
+    >
+      <div class="blob-container" id="blob4"></div>
+      <h1>Fresh Green</h1>
+      <p class="description">빠른 속도</p>
+    </div>
+
+    <script src="../components/morphing-blob/morphing-blob.js"></script>
+    <script>
+      new MorphingBlob(document.getElementById("blob1"), {
+        size: 600,
+        colors: ["#ffffff", "#ffd6ff", "#e7c6ff"],
+        speed: 15,
+        blur: 60
+      });
+
+      new MorphingBlob(document.getElementById("blob2"), {
+        size: 500,
+        colors: ["#ffffff", "#ffb3c1", "#ffc6d9"],
+        speed: 12,
+        blur: 50
+      });
+
+      new MorphingBlob(document.getElementById("blob3"), {
+        size: 700,
+        colors: ["#ffffff", "#a2d9ff", "#c1e7ff"],
+        speed: 10,
+        blur: 70
+      });
+
+      new MorphingBlob(document.getElementById("blob4"), {
+        size: 550,
+        colors: ["#ffffff", "#a8ffb3", "#c1ffc8"],
+        speed: 25,
+        blur: 55
+      });
+    </script>
+  </body>
+</html>

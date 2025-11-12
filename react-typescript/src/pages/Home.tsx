@@ -54,7 +54,12 @@ export const Home: React.FC = () => {
       desc: "섹션 스냅 스크롤"
     },
     { path: "/carousel", name: "Carousel", desc: "캐러셀 슬라이더" },
-    { path: "/tabs", name: "Tabs", desc: "탭 컴포넌트 (10+ 스타일)" }
+    { path: "/tabs", name: "Tabs", desc: "탭 컴포넌트 (10+ 스타일)" },
+    {
+      path: "/creative-effects",
+      name: "Creative Effects",
+      desc: "신기한 효과 모음"
+    }
   ];
 
   return (

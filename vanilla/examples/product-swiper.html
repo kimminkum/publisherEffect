@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Product Swiper - Vanilla JS</title>
+    <link
+      rel="stylesheet"
+      href="../components/product-swiper/product-swiper.css"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          sans-serif;
+        background: #fff;
+        padding: 40px 20px;
+      }
+
+      .nav {
+        max-width: 1400px;
+        margin: 0 auto 40px;
+      }
+
+      .back-btn {
+        display: inline-block;
+        padding: 12px 24px;
+        background: #667eea;
+        color: white;
+        text-decoration: none;
+        border-radius: 8px;
+        transition: background 0.3s;
+      }
+
+      .back-btn:hover {
+        background: #5568d3;
+      }
+
+      .container {
+        max-width: 1400px;
+        margin: 0 auto;
+      }
+
+      h1 {
+        font-size: 48px;
+        margin-bottom: 60px;
+        text-align: center;
+      }
+
+      .product-swiper {
+        height: 100vh;
+        margin-bottom: 40px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="nav">
+      <a href="index.html" class="back-btn">← 메인으로</a>
+    </div>
+
+    <div class="container">
+      <h1>🛍️ Product Swiper</h1>
+
+      <div class="product-swiper" id="productSwiper"></div>
+    </div>
+
+    <script src="../components/product-swiper/product-swiper.js"></script>
+    <script>
+      new ProductSwiper("#productSwiper", {
+        products: [
+          {
+            image:
+              "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=800",
+            title: "Premium Headphones",
+            description:
+              "최고급 노이즈 캔슬링 헤드폰으로 완벽한 사운드를 경험하세요.",
+            price: "₩299,000"
+          },
+          {
+            image:
+              "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=800",
+            title: "Smart Watch Pro",
+            description:
+              "당신의 건강과 일상을 스마트하게 관리하는 최신 웨어러블 기기.",
+            price: "₩449,000"
+          },
+          {
+            image:
+              "https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=800",
+            title: "Wireless Speaker",
+            description: "360도 사운드로 어디서나 완벽한 음질을 즐기세요.",
+            price: "₩189,000"
+          },
+          {
+            image:
+              "https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?w=800",
+            title: "Camera Gear",
+            description: "프로페셔널 촬영을 위한 최고의 카메라 장비.",
+            price: "₩1,299,000"
+          }
+        ]
+      });
+    </script>
+  </body>
+</html>

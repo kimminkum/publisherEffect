@@ -1,0 +1,112 @@
+.split-text {
+  display: inline-block;
+}
+
+.split-char,
+.split-word,
+.split-line {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+/* Fade Up Animation */
+.split-text-fade-up .split-char.animate,
+.split-text-fade-up .split-word.animate,
+.split-text-fade-up .split-line.animate {
+  animation: splitFadeUp 0.6s ease forwards;
+}
+
+@keyframes splitFadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Fade In Animation */
+.split-text-fade-in .split-char.animate,
+.split-text-fade-in .split-word.animate,
+.split-text-fade-in .split-line.animate {
+  animation: splitFadeIn 0.6s ease forwards;
+}
+
+@keyframes splitFadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Scale Animation */
+.split-text-scale .split-char,
+.split-text-scale .split-word {
+  transform: scale(0);
+}
+
+.split-text-scale .split-char.animate,
+.split-text-scale .split-word.animate {
+  animation: splitScale 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+@keyframes splitScale {
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Rotate Animation */
+.split-text-rotate .split-char,
+.split-text-rotate .split-word {
+  transform: rotateY(90deg);
+  transform-origin: center;
+}
+
+.split-text-rotate .split-char.animate,
+.split-text-rotate .split-word.animate {
+  animation: splitRotate 0.6s ease forwards;
+}
+
+@keyframes splitRotate {
+  to {
+    opacity: 1;
+    transform: rotateY(0deg);
+  }
+}
+
+/* Slide Left Animation */
+.split-text-slide-left .split-char,
+.split-text-slide-left .split-word {
+  transform: translateX(50px);
+}
+
+.split-text-slide-left .split-char.animate,
+.split-text-slide-left .split-word.animate {
+  animation: splitSlideLeft 0.6s ease forwards;
+}
+
+@keyframes splitSlideLeft {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Bounce Animation */
+.split-text-bounce .split-char,
+.split-text-bounce .split-word {
+  transform: translateY(-50px);
+}
+
+.split-text-bounce .split-char.animate,
+.split-text-bounce .split-word.animate {
+  animation: splitBounce 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+}
+
+@keyframes splitBounce {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

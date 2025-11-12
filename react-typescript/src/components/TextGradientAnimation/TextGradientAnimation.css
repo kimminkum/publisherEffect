@@ -1,0 +1,36 @@
+.text-gradient-animation {
+  display: inline-block;
+  font-weight: 700;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+.text-gradient-left-right,
+.text-gradient-right-left {
+  animation: gradientMoveHorizontal 3s linear infinite;
+}
+
+.text-gradient-top-bottom,
+.text-gradient-bottom-top {
+  animation: gradientMoveVertical 3s linear infinite;
+}
+
+@keyframes gradientMoveHorizontal {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes gradientMoveVertical {
+  0% {
+    background-position: 50% 0%;
+  }
+  100% {
+    background-position: 50% 100%;
+  }
+}

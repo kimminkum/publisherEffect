@@ -1,0 +1,89 @@
+.image-reveal {
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+}
+
+.image-reveal img {
+  display: block;
+  width: 100%;
+  height: auto;
+  transform: scale(1.2);
+  transition: transform 0.6s ease;
+}
+
+.image-reveal::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #667eea;
+  transform-origin: left;
+}
+
+/* Direction variants */
+.image-reveal-left::after {
+  transform: scaleX(1);
+}
+
+.image-reveal-right::after {
+  transform-origin: right;
+  transform: scaleX(1);
+}
+
+.image-reveal-top::after {
+  transform-origin: top;
+  transform: scaleY(1);
+}
+
+.image-reveal-bottom::after {
+  transform-origin: bottom;
+  transform: scaleY(1);
+}
+
+/* Revealed state */
+.image-reveal-left.revealed::after {
+  animation: revealLeft 1s ease forwards;
+}
+
+.image-reveal-right.revealed::after {
+  animation: revealRight 1s ease forwards;
+}
+
+.image-reveal-top.revealed::after {
+  animation: revealTop 1s ease forwards;
+}
+
+.image-reveal-bottom.revealed::after {
+  animation: revealBottom 1s ease forwards;
+}
+
+.image-reveal.revealed img {
+  transform: scale(1);
+}
+
+@keyframes revealLeft {
+  to {
+    transform: scaleX(0);
+  }
+}
+
+@keyframes revealRight {
+  to {
+    transform: scaleX(0);
+  }
+}
+
+@keyframes revealTop {
+  to {
+    transform: scaleY(0);
+  }
+}
+
+@keyframes revealBottom {
+  to {
+    transform: scaleY(0);
+  }
+}

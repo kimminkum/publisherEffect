@@ -1,0 +1,16 @@
+.svg-draw path,
+.svg-draw circle,
+.svg-draw rect,
+.svg-draw line,
+.svg-draw polyline,
+.svg-draw polygon {
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+@keyframes svgDraw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
