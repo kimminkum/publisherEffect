@@ -21,6 +21,7 @@ import { FullPageScrollExample } from "./pages/FullPageScrollExample";
 import { CarouselExample } from "./pages/CarouselExample";
 import { TabsExample } from "./pages/TabsExample";
 import { CreativeEffectsExample } from "./pages/CreativeEffectsExample";
+import { GradientSectionsExample } from "./pages/GradientSectionsExample";
 import "./App.css";
 
 function App() {
@@ -51,6 +52,10 @@ function App() {
         <Route path="/carousel" element={<CarouselExample />} />
         <Route path="/tabs" element={<TabsExample />} />
         <Route path="/creative-effects" element={<CreativeEffectsExample />} />
+        <Route
+          path="/gradient-sections"
+          element={<GradientSectionsExample />}
+        />
       </Routes>
     </BrowserRouter>
   );

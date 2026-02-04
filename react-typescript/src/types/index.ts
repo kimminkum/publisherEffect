@@ -414,3 +414,30 @@ export interface ImageRevealProps {
   delay?: number;
   className?: string;
 }
+
+// Gradient Sections (스크롤 높이별 섹션 그라데이션 배경)
+export type GradientSectionsBackgroundWidth = "100%" | 1920 | number;
+
+export type GradientSectionContentLayout = "full" | "contained";
+
+export interface GradientSectionItem {
+  /** 섹션 상단 그라데이션 색상 (예: #000) */
+  topColor: string;
+  /** 섹션 하단 그라데이션 색상 (예: #fff) */
+  bottomColor: string;
+  /** 섹션 내부 콘텐츠 */
+  content?: React.ReactNode;
+  /** 콘텐츠 레이아웃: full=전체 너비(이미지 등), contained=고정 너비+흰 배경 */
+  contentLayout?: GradientSectionContentLayout;
+  /** contained일 때 콘텐츠 영역 너비 (기본 1280) */
+  contentWidth?: number;
+  /** 섹션 최소 높이 (기본 100vh) */
+  minHeight?: number | string;
+}
+
+export interface GradientSectionsProps {
+  sections: GradientSectionItem[];
+  /** 배경 그라데이션 영역 너비: '100%' | 1920 | 숫자(px) */
+  backgroundWidth?: GradientSectionsBackgroundWidth;
+  className?: string;
+}

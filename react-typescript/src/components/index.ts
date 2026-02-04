@@ -37,6 +37,7 @@ export { SVGDraw } from "./SVGDraw";
 export { ParticleEffect } from "./ParticleEffect";
 export { SmoothScroll } from "./SmoothScroll";
 export { ImageReveal } from "./ImageReveal";
+export { GradientSections } from "./GradientSections";
 
 // Export types
 export type * from "../types";

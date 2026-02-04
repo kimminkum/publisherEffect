@@ -1,0 +1,61 @@
+/* GradientSections - 섹션별 스크롤 그라데이션 배경 */
+
+.gradient-sections-wrapper {
+  width: 100%;
+}
+
+.gradient-sections-inner {
+  width: 100%;
+  max-width: 100%;
+}
+
+.gradient-sections-inner.max-width-100 {
+  max-width: 100%;
+}
+
+.gradient-sections-inner.max-width-1920 {
+  max-width: 1920px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.gradient-section-item {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
+.gradient-section-item .gradient-section-content {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+}
+
+/* full: 전체 너비, 배경 그라데이션 살림 (이미지 등) */
+.gradient-section-item .gradient-section-content.layout-full {
+  max-width: 100%;
+}
+
+/* contained: 고정 너비 + 흰 배경 + 텍스트 */
+.gradient-section-item .gradient-section-content.layout-contained {
+  max-width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
+  background: #fff;
+  padding: 48px 32px;
+  box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
+  .gradient-section-item .gradient-section-content.layout-contained {
+    padding: 32px 20px;
+    margin-left: 16px;
+    margin-right: 16px;
+    max-width: calc(100% - 32px);
+  }
+}

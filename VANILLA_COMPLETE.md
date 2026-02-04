@@ -115,3 +115,4 @@ http://localhost:57048/examples/index.html
 - ✅ 바로 테스트 가능
 
 **React와 완전히 동일한 경험을 Vanilla에서도!** 🚀
+

@@ -2279,6 +2279,107 @@ new ImageReveal(imageContainer, {
 
 
 ═══════════════════════════════════════════════════════════════════
+  12. Gradient Sections (섹션별 스크롤 그라데이션 배경)
+═══════════════════════════════════════════════════════════════════
+
+📌 개요
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+섹션이 1~n개 있고, 섹션마다 "상단 색상 → 하단 색상" 그라데이션을 지정합니다.
+스크롤 높이에 따라 섹션별로 배경 색이 그라데이션으로 적용됩니다.
+배경은 100% 또는 1920px 등 너비 지정 가능.
+콘텐츠는 "전체 너비(이미지 등, 배경 그라데이션 살림)" 또는
+"고정 너비(1280px 등) + 흰 배경 + 텍스트"로 둘 수 있습니다.
+
+
+📌 기본 사용법
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+React:
+```tsx
+import { GradientSections } from './components';
+
+<GradientSections
+  sections={[
+    {
+      topColor: '#000',
+      bottomColor: '#fff',
+      minHeight: '100vh',
+      content: <div>섹션 1: 검정→흰색</div>,
+      contentLayout: 'full'
+    },
+    {
+      topColor: '#fff',
+      bottomColor: '#00ff00',
+      minHeight: '100vh',
+      content: <div>섹션 2: 흰색→초록</div>,
+      contentLayout: 'full'
+    },
+    {
+      topColor: '#00ff00',
+      bottomColor: '#0066ff',
+      content: <><h2>제목</h2><p>텍스트...</p></>,
+      contentLayout: 'contained',
+      contentWidth: 1280
+    }
+  ]}
+  backgroundWidth={1920}
+/>
+```
+
+
+📌 섹션 옵션 (GradientSectionItem)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+topColor       섹션 상단 그라데이션 색 (예: #000)
+bottomColor    섹션 하단 그라데이션 색 (예: #fff)
+content        섹션 안의 콘텐츠 (ReactNode, 생략 가능)
+contentLayout  'full' | 'contained'
+  - full: 전체 너비, 배경 그라데이션 살림 (이미지/반투명 등)
+  - contained: 고정 너비 + 흰 배경 + 텍스트
+contentWidth   contentLayout이 'contained'일 때 너비 (기본 1280)
+minHeight      섹션 최소 높이 (기본 '100vh', 숫자면 px)
+
+
+📌 배경 너비 (backgroundWidth)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+<GradientSections backgroundWidth="100%" ... />   // 전체 너비
+<GradientSections backgroundWidth={1920} ... />   // 최대 1920px, 중앙 정렬
+<GradientSections backgroundWidth={1400} ... />   // 최대 1400px
+
+
+📌 예: 이미지만 넣어 배경 그라데이션 살리기
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+{
+  topColor: '#1a1a2e',
+  bottomColor: '#16213e',
+  contentLayout: 'full',
+  content: (
+    <img src="hero.jpg" alt="히어로" style={{ maxWidth: '80%', opacity: 0.9 }} />
+  )
+}
+
+
+📌 예: 1280px 흰 박스에 텍스트
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+{
+  topColor: '#0066ff',
+  bottomColor: '#6600ff',
+  contentLayout: 'contained',
+  contentWidth: 1280,
+  content: (
+    <>
+      <h2>서비스 소개</h2>
+      <p>본문 텍스트...</p>
+    </>
+  )
+}
+
+
+═══════════════════════════════════════════════════════════════════
 
 🎉 총 30+ 컴포넌트 완성!
 

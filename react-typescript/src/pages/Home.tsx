@@ -59,6 +59,11 @@ export const Home: React.FC = () => {
       path: "/creative-effects",
       name: "Creative Effects",
       desc: "신기한 효과 모음"
+    },
+    {
+      path: "/gradient-sections",
+      name: "Gradient Sections",
+      desc: "섹션별 스크롤 그라데이션 배경"
     }
   ];
 
