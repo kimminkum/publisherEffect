@@ -44,7 +44,7 @@ export const GradientSectionsExample: React.FC = () => {
     {
       topColor: "#00ff00",
       bottomColor: "#0066ff",
-      minHeight: "100vh",
+      minHeight: "300vh",
       content: (
         <>
           <h2 style={{ marginBottom: "16px", color: "#111" }}>
@@ -67,7 +67,7 @@ export const GradientSectionsExample: React.FC = () => {
     {
       topColor: "#0066ff",
       bottomColor: "#6600ff",
-      minHeight: "100vh",
+      minHeight: "400vh",
       content: (
         <div
           style={{
